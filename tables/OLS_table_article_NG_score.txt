@@ -1,0 +1,26 @@
+
+\begin{table}[]
+    \footnotesize
+    \centering
+    \begin{tabular}{l|c|c|c|c|c|c}
+            & coef. & std. err. & $t$ & $P>\vert t \vert$ & [0.025 & 0.975] \\
+            \toprule
+		Intercept & 94.773 & 0.068 & 1396.422 & 0.000 & 94.640 & 94.906 \\ 
+		Republican & -9.194 & 0.108 & -84.746 & 0.000 & -9.406 & -8.981 \\ 
+		belief-speaking & -42.563 & 11.542 & -3.688 & 0.000 & -65.186 & -19.940 \\ 
+		Rep. $\times$ belief-speaking & -19.107 & 17.684 & -1.080 & 0.280 & -53.768 & 15.553 \\ 
+		truth-seeking & 19.365 & 6.108 & 3.170 & 0.002 & 7.393 & 31.337 \\ 
+		Rep. $\times$ truth-seeking & -46.697 & 9.855 & -4.739 & 0.000 & -66.012 & -27.383 \\ 
+		\bottomrule 
+		\multicolumn{2}{l}{R-squared} & \multicolumn{1}{r}0.131 & \multicolumn{2}{l}{Mean dependent var} & \multicolumn{2}{r}91.093 \\ 
+		\multicolumn{2}{l}{Adjusted R-squared} & \multicolumn{1}{r}0.131 & \multicolumn{2}{l}{S.D. dependent var} & \multicolumn{2}{r}12.906 \\ 
+		\multicolumn{2}{l}{Model MSE} & \multicolumn{1}{r}701684.186 & \multicolumn{2}{l}{AIC} & \multicolumn{2}{r}1255933.876 \\ 
+		\multicolumn{2}{l}{Sum squared resid} & \multicolumn{1}{r}23268646.824 & \multicolumn{2}{l}{BIC} & \multicolumn{2}{r}1255993.801 \\ 
+		\multicolumn{2}{l}{Log-likelihood} & \multicolumn{1}{r}-627960.938 & \multicolumn{2}{l}{F-statistic} & \multicolumn{2}{r}4847.361 \\ 
+		\multicolumn{2}{l}{Durbin-Watson stat} & \multicolumn{1}{r}1.162 & \multicolumn{2}{l}{Prob(F-statistic)} & \multicolumn{2}{r}0.000 \\ 
+
+            \bottomrule
+    \end{tabular}
+    \caption{TODO}
+    \label{tab:TODO}
+\end{table}

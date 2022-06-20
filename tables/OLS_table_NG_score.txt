@@ -1,0 +1,28 @@
+
+\begin{table}[]
+    \footnotesize
+    \centering
+    \begin{tabular}{l|c|c|c|c|c|c}
+            & coef. & std. err. & $t$ & $P>\vert t \vert$ & [0.025 & 0.975] \\
+            \toprule
+		Intercept & 91.362 & 1.063 & 85.980 & 0.000 & 89.277 & 93.448 \\ 
+		Republican & -1.827 & 0.885 & -2.063 & 0.039 & -3.564 & -0.089 \\ 
+		log(followers) & -0.226 & 0.101 & -2.230 & 0.026 & -0.425 & -0.027 \\ 
+		log(\# tweets) & 0.421 & 0.158 & 2.672 & 0.008 & 0.112 & 0.730 \\ 
+		belief-speaking & 2.258 & 5.740 & 0.393 & 0.694 & -9.007 & 13.522 \\ 
+		Rep. $	imes$ belief-speaking & -67.191 & 8.942 & -7.514 & 0.000 & -84.738 & -49.644 \\ 
+		truth-seeking & 11.921 & 4.688 & 2.543 & 0.011 & 2.722 & 21.120 \\ 
+		Rep. $	imes$ truth-seeking & -3.249 & 6.329 & -0.513 & 0.608 & -15.669 & 9.171 \\ 
+		\bottomrule 
+		\multicolumn{2}{l}{R-squared} & \multicolumn{1}{r}0.490 & \multicolumn{2}{l}{Mean dependent var} & \multicolumn{2}{r}90.980 \\ 
+		\multicolumn{2}{l}{Adjusted R-squared} & \multicolumn{1}{r}0.487 & \multicolumn{2}{l}{S.D. dependent var} & \multicolumn{2}{r}5.439 \\ 
+		\multicolumn{2}{l}{Model MSE} & \multicolumn{1}{r}2063.668 & \multicolumn{2}{l}{AIC} & \multicolumn{2}{r}5599.533 \\ 
+		\multicolumn{2}{l}{Sum squared resid} & \multicolumn{1}{r}15018.916 & \multicolumn{2}{l}{BIC} & \multicolumn{2}{r}5638.859 \\ 
+		\multicolumn{2}{l}{Log-likelihood} & \multicolumn{1}{r}-2791.767 & \multicolumn{2}{l}{F-statistic} & \multicolumn{2}{r}137.405 \\ 
+		\multicolumn{2}{l}{Durbin-Watson stat} & \multicolumn{1}{r}1.949 & \multicolumn{2}{l}{Prob(F-statistic)} & \multicolumn{2}{r}0.000 \\ 
+
+            \bottomrule
+    \end{tabular}
+    \caption{TODO}
+    \label{tab:TODO}
+\end{table}
