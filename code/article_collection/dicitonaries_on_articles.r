@@ -1,3 +1,5 @@
+# author: Almog Simchon
+
 # Apply Dictionaries on the Articles --------------------------------------
 
 #load libraries

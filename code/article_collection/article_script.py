@@ -1,3 +1,5 @@
+# author: Almog Simchon
+
 import newspaper
 from newspaper import Article
 from newspaper.configuration import Configuration

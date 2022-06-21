@@ -1,3 +1,5 @@
+# author: Almog Simchon
+
 #NewsGuard Scraping
 
 
