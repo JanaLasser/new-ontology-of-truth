@@ -2,8 +2,7 @@ library(dplyr)
 library(spacyr)
 
 # import df
-df <- read.csv("../../data/tweets/combined_US_politician_twitter_timelines_2010-11-06_to_2022-03-16_honesty_component_labels.csv.gzip",
-                    encoding = "UTF-8")
+df <- read.csv("../../data/tweets/combined_US_politician_twitter_timelines_2010-11-06_to_2022-03-16_honesty_component_labels.csv.gzip", encoding = "UTF-8")
 
 View(df)
 
