@@ -1,16 +1,28 @@
+# author: Fabio Carrella
+
+# set packages and functions
 library(krippendorffsalpha)
 library(dplyr)
 
-alpha_df <- ann_a_df %>% 
-  left_join(ann_b_df, by = "Texts") %>% 
-  rename(annotator_a = Component.x,
-         annotator_b = Component.y) %>% 
-  mutate(annotator_a = ifelse(annotator_a == "No", 0, 1),
-         annotator_b = ifelse(annotator_b == "No", 0, 1)) %>% 
-  select(-Texts)
+extract_alpha_from_df <- function(df) { 
+  df <- df %>% 
+    mutate(Annotator_A = ifelse(Annotator_A == "No", 0, 1),
+           Annotator_B = ifelse(Annotator_B == "No", 0, 1)) %>% 
+    select(-Texts)
+  
+  df_fit <- krippendorffs.alpha(as.matrix(df), level = "interval", 
+                                confint = T, verbose = T, 
+                                control = list(parallel = F, bootit = 1000))
+  
+  return(summary(df_fit))
+}
 
-alpha_fit <- krippendorffs.alpha(as.matrix(alpha_df), level = "interval", 
-                                 confint = T, verbose = T, 
-                                 control = list(parallel = F, bootit = 1000))
+#import dataframes
+belief_annotations <- readxl::read_xlsx("../../data/tweets/belief_annotations.xlsx")
+truth_annotations <- readxl::read_xlsx("../../data/tweets/truth_annotations.xlsx")
+foster_annotations <- readxl::read_xlsx("../../data/tweets/foster_annotations.xlsx")
 
-summary(alpha_fit)
+# calculate Krippendorff's Alpha from dataframes
+extract_alpha_from_df(belief_annotations)
+extract_alpha_from_df(truth_annotations)
+extract_alpha_from_df(foster_annotations)
