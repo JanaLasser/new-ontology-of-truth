@@ -1,3 +1,5 @@
+# author: Fabio Carrella & Almog Simchon
+
 #setting libraries and functions
 library(quanteda)
 library(quanteda.textstats)

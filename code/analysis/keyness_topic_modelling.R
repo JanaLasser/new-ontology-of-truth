@@ -1,3 +1,5 @@
+# author: Fabio Carrella
+
 # load libraries and set functions
 library(dplyr)
 library(ggplot2)

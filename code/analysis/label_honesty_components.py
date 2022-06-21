@@ -1,3 +1,5 @@
+# author: Segun Aroyehun
+
 from pathlib import Path
 from os.path import join
 import argparse
