@@ -49,6 +49,7 @@ In the script `wrangle_data.ipynb` we export a list of urls `url_list_for_articl
 ### Honesty components
 The script `label_honesty_components.sh` calls the script `label_honesty_components.py` with a number of parameters to detect honesty components in the tweet texts. The script ingests the file `tweets/combined_US_politician_twitter_timelines_2010-11-06_to_2022-03-16_clean.csv.gzip` and outputs the honesty component labels for each tweet in the file `tweets/twitter_honesty_component_labels.csv.gzip` for later ingestion by `wrangle_data.ipynb`. The script requires the three honesty component dictionaries `belief_speaking_lemmav3.csv`, `truth_seeking_lemmav3.csv` and `seeking_understanding_lemmav3.csv` as well as a list of masked words `mask_list.csv`, all stored in `utilities`. 
 
+### Interrater reliability
 TODO Interrater reliability
 
 ### LIWC scores
@@ -99,8 +100,13 @@ The script `wrangle_data.ipynb` takes input from all previous data collection an
     * `NG_unreliable` and `independent_unreliable`: Whether the URL pointed to an "unreliable" website, i.e. a website with a NewsGuard score < 60 or an accuracy score < 1.5 or a transparency score of < 2.5.
        
 
+### Lemmatization
+Before further analysis of the texts can be performed, the texts first need to be lemmatized. This is performed in the script `analysis/lemmatization.R`. The script takes as input file the file containing texts and honesty labels created by the script `analysis/label_honesty_components.sh` and outputs the file `tweets/combined_US_politician_twitter_timelines_2010-11-06_to_2022-03-16_lemmatized_text.csv.gzip`, which is used by the scripts `scattertext.R` and `BERT_topic_modelling.ipynb`.
+
 ### Topic modelling
-Before the topic modelling of the tweet texts can be performed, the text first needs to be lemmatized. This is performed in the script `analysis/lemmatization.R`. The script takes as input file the file containing texts and honesty labels created by the script `analysis/label_honesty_components.sh'
+Topic modelling is performed using the library [BERTopic](https://github.com/MaartenGr/BERTopic). The fitted model is saved under `twitter_lemmatized` for later re-use, since fitting the model takes about 4 hours. The script outputs two results files: `tweets/topics_per_class.csv` and `tweets/key_topics.csv`, which are used by `plots.ipynb` to visualize topics.
+
+TODO: upload model to OSF
 
 ### Statistical modelling
 Statistical modelling to determine the relation of belief-speaking and truth-seeking to information quality is performed in the script `statistical_modelling.ipynb`. We use linear regressions models that are fitted using an ordinary least squares method, implemented by the Python library [statsmodels](https://www.statsmodels.org/stable/index.html).  
@@ -119,4 +125,35 @@ Descriptive statistics of the various data sets used in our analysis and reporte
 
 Data-based visualisations of the manuscript are created in the script `plots.ipynb` and saved in the folder `plots`.  
 
-The script ingests [TODO] 
+The script ingests the following files to create all figures in the main manuscript, extended data and figures and supplement:
+
+#### Figure 1
+* `tweets/topics_per_class.csv' 
+* Note that panel A of figure 1 is created in a separate script `scattertext.R` and merged with panels B and C in the LaTeX file.
+
+#### Figure 2
+* `users/US_politician_accounts_2010-11-06_to_2022-03-16.csv`
+* `bootstrapping/belief.csv`
+* `bootstrapping/truth.csv`
+
+#### Figure 3
+* `users/"US_politician_accounts_2010-11-06_to_2022-03-16.csv`
+* `users/OLS_predictions_score.csv`
+* `articles/article_scores_with_parties.csv.gzip`
+* `OLS_predictions_articles.csv`
+
+#### Extended Data Figure 2
+* `bootstrapping/LIWC.csv`
+* `bootstrapping/LIWC_belief.csv`
+* `bootstrapping/LIWC_truth.csv`
+* `bootstrapping/LIWC_neutral.csv`
+
+#### Extended Data Figure 3
+* `bootstrapping/NG_coverage.csv`
+* `bootstrapping/independent_coverage.csv`
+
+#### Extended Data Figure 4
+* `articles/article_scores_with_parties.csv.gzip`
+
+#### Supplementary Figure 1
+* `bootstrappng/user_reliability_score_correlations.csv`
