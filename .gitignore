@@ -131,3 +131,7 @@ dmypy.json
 data/
 
 *.Rhistory
+
+code/article_collection/.ipynb_checkpoints/
+code/tweet_collection/.ipynb_checkpoints/
+code/analysis/.ipynb_checkpoints
