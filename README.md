@@ -1,6 +1,6 @@
-# A new ontology of truth shifts public political discourse towards misinformation
+# New conceptions of truth foster misinformation in online public political discourse
 
-Data collection and analysis code for the article "A new ontology of truth shifts public political discourse towards misinformation" (see [preprint](TODO)).
+Data collection and analysis code for the article "A new ontology of truth shifts public political discourse towards misinformation".
 
 Authors: Jana Lasser (jana.lasser@tugraz.at), Segun Taofeek Aroyehun, Fabio Carrella, Almog Simchon, David Garcia and Stephan
 Lewandowsky (Stephan.Lewandowsky@bristol.ac.uk).
@@ -8,7 +8,7 @@ Lewandowsky (Stephan.Lewandowsky@bristol.ac.uk).
 ## General Notes
 
 ### Data publication
-The code published in this repository needs a number of data sets to execute. These data sets are published in a separate [OSF repository](TODO), because they are too large to be hosted on GitHub. Therefore, to run the code, after downloading this repository please download the `data` folder contained in the aforementioned OSF repository and copy it into the main directory of this repository (i.e. on the same level as the `code`, `plots`  and `tables` folders).
+The code published in this repository needs a number of data sets to execute. These data sets are published in a separate [OSF repository](https://doi.org/10.17605/OSF.IO/VNY8K), because they are too large to be hosted on GitHub. Therefore, to run the code, after downloading this repository please download the `data` folder contained in the aforementioned OSF repository and copy it into the main directory of this repository (i.e. on the same level as the `code`, `plots`  and `tables` folders).
 
 ### Restrictions on data publication
 There are restrictions to publishing all data sets required to fully reproduce our work. These restrictions apply to 
@@ -106,9 +106,7 @@ Before further analysis of the texts can be performed, the texts first need to b
 ### Topic modelling
 Topic modelling is performed using the library [BERTopic](https://github.com/MaartenGr/BERTopic). The fitted model is saved under `twitter_lemmatized` for later re-use, since fitting the model takes about 4 hours. The script outputs two results files: `tweets/topics_per_class.csv` and `tweets/key_topics.csv`, which are used by `plots.ipynb` to visualize topics.
 
-TODO: upload model to OSF
-
-### Statistical modelling
+### Regression
 Statistical modelling to determine the relation of belief-speaking and truth-seeking to information quality is performed in the script `statistical_modelling.ipynb`. We use linear regressions models that are fitted using an ordinary least squares method, implemented by the Python library [statsmodels](https://www.statsmodels.org/stable/index.html).  
 
 The script ingests the file `users/US_politician_accounts_2010-11-06_to_2022-03-16.csv` to fit the user-level regression models, and the file `articles/article_scores_with_parties.csv.gzip` to fit the article-level regression models.  
@@ -116,6 +114,9 @@ The script ingests the file `users/US_politician_accounts_2010-11-06_to_2022-03-
 The script outputs predictions of average NewsGuard, accuracy and transparency scores of individual users depending on the share of belief-speaking and truth-seeking tweets by that user. The predictions are stored in the files `OLS_predictions_score.csv`, `OLS_predictions_accuracy.csv` and `OLS_predictions_transparency.csv` in the folder `users` and ingested by `plots.ipynb` to produce visualisations. Similarly, the script outputs predictions for NewsGuard scores of individual domains depending on the share of belief-speaking and truth-seeking words contained in the article text. These predictions are stored at `articles/OLS_predictions_articles.csv`.
 
 Lastly, the script also outputs LaTeX tables containing the regression statistics that are reported in the paper. These stables are saved in `tables`.
+
+### Mediation analysis
+Mediation analysis is performed in the script `mediation.r`. The script ingests the file `tweets/US_politician_tweets_2010-11-06_to_2022-03-16.csv.gzip` and outputs the summary statistics of the mediation analysis.
 
 ### Bootstrapping
 Timelines shown in our paper include confidence intervals determined via bootstrapping. Bootstrapping is performed in the script `bootstrapping.ipynb`. Bootstrapping results are saved in the folder `bootstrapping` for ingestion by `plots.ipynb`.
