@@ -5,21 +5,21 @@
     \begin{tabular}{l|c|c|c|c|c|c}
             & coef. & std. err. & $t$ & $P>\vert t \vert$ & [0.025 & 0.975] \\
             \toprule
-		Intercept & 2.824 & 0.048 & 58.967 & 0.000 & 2.730 & 2.918 \\ 
-		Republican & -0.115 & 0.040 & -2.863 & 0.004 & -0.194 & -0.036 \\ 
-		log(followers) & -0.012 & 0.005 & -2.715 & 0.007 & -0.021 & -0.003 \\ 
-		log(\# tweets) & 0.021 & 0.007 & 2.991 & 0.003 & 0.007 & 0.035 \\ 
-		belief-speaking & -0.537 & 0.259 & -2.070 & 0.039 & -1.045 & -0.028 \\ 
-		Rep. $	imes$ belief-speaking & -2.879 & 0.405 & -7.107 & 0.000 & -3.674 & -2.084 \\ 
-		truth-seeking & 0.324 & 0.210 & 1.539 & 0.124 & -0.089 & 0.737 \\ 
-		Rep. $	imes$ truth-seeking & 0.244 & 0.286 & 0.852 & 0.395 & -0.318 & 0.805 \\ 
+		Intercept & 2.774 & 0.048 & 57.978 & 0.000 & 2.680 & 2.867 \\ 
+		Republican & -0.128 & 0.033 & -3.867 & 0.000 & -0.193 & -0.063 \\ 
+		log(followers) & -0.008 & 0.005 & -1.688 & 0.092 & -0.017 & 0.001 \\ 
+		log(\# tweets) & 0.025 & 0.007 & 3.478 & 0.001 & 0.011 & 0.040 \\ 
+		belief-speaking & -0.592 & 0.394 & -1.506 & 0.133 & -1.365 & 0.180 \\ 
+		Rep. $	imes$ belief-speaking & -1.966 & 0.569 & -3.459 & 0.001 & -3.082 & -0.851 \\ 
+		truth-seeking & 0.139 & 0.388 & 0.359 & 0.720 & -0.622 & 0.901 \\ 
+		Rep. $	imes$ truth-seeking & -0.677 & 0.516 & -1.311 & 0.190 & -1.689 & 0.336 \\ 
 		\bottomrule 
-		\multicolumn{2}{l}{R-squared} & \multicolumn{1}{r}0.446 & \multicolumn{2}{l}{Mean dependent var} & \multicolumn{2}{r}2.741 \\ 
-		\multicolumn{2}{l}{Adjusted R-squared} & \multicolumn{1}{r}0.443 & \multicolumn{2}{l}{S.D. dependent var} & \multicolumn{2}{r}0.235 \\ 
-		\multicolumn{2}{l}{Model MSE} & \multicolumn{1}{r}3.544 & \multicolumn{2}{l}{AIC} & \multicolumn{2}{r}-640.933 \\ 
-		\multicolumn{2}{l}{Sum squared resid} & \multicolumn{1}{r}30.757 & \multicolumn{2}{l}{BIC} & \multicolumn{2}{r}-601.607 \\ 
-		\multicolumn{2}{l}{Log-likelihood} & \multicolumn{1}{r}328.466 & \multicolumn{2}{l}{F-statistic} & \multicolumn{2}{r}115.229 \\ 
-		\multicolumn{2}{l}{Durbin-Watson stat} & \multicolumn{1}{r}1.959 & \multicolumn{2}{l}{Prob(F-statistic)} & \multicolumn{2}{r}0.000 \\ 
+		\multicolumn{2}{l}{R-squared} & \multicolumn{1}{r}0.412 & \multicolumn{2}{l}{Mean dependent var} & \multicolumn{2}{r}2.741 \\ 
+		\multicolumn{2}{l}{Adjusted R-squared} & \multicolumn{1}{r}0.408 & \multicolumn{2}{l}{S.D. dependent var} & \multicolumn{2}{r}0.235 \\ 
+		\multicolumn{2}{l}{Model MSE} & \multicolumn{1}{r}3.271 & \multicolumn{2}{l}{AIC} & \multicolumn{2}{r}-580.242 \\ 
+		\multicolumn{2}{l}{Sum squared resid} & \multicolumn{1}{r}32.666 & \multicolumn{2}{l}{BIC} & \multicolumn{2}{r}-540.916 \\ 
+		\multicolumn{2}{l}{Log-likelihood} & \multicolumn{1}{r}298.121 & \multicolumn{2}{l}{F-statistic} & \multicolumn{2}{r}100.149 \\ 
+		\multicolumn{2}{l}{Durbin-Watson stat} & \multicolumn{1}{r}1.957 & \multicolumn{2}{l}{Prob(F-statistic)} & \multicolumn{2}{r}0.000 \\ 
 
             \bottomrule
     \end{tabular}
