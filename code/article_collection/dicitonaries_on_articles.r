@@ -1,5 +1,3 @@
-# author: Almog Simchon
-
 # Apply Dictionaries on the Articles --------------------------------------
 
 #load libraries
@@ -8,6 +6,7 @@ pacman::p_load(tidyverse, data.table, quanteda)
 
 #read_data
 fully_scraped <- read_rds("scraped_corpus_raw.rds")
+tweets_with_urls <- fread('tweets_with_urls.csv')
 
 #remove missing content
 fully_scraped_analysis <- fully_scraped %>% 
@@ -22,12 +21,11 @@ fully_scraped_analysis <- fully_scraped %>%
   mutate(link_text = str_remove(link_text,"Placeholder while article actions load"))
 
 # read honest components
-belief_speaking <- read_csv("dictionaires/belief_speaking_lemmav3.csv")
-truth_seeking <- read_csv("dictionaires/truth_seeking_lemmav3.csv")
+dict_csv <- read_csv("dictionaires/keywords.csv")
 
 #define dictionary
-dict <- dictionary(list(belief = belief_speaking$belief_speaking,
-                        truth = truth_seeking$truth_seeking))
+dict <- dictionary(list(belief = dict_csv$belief_speaking,
+                        truth = dict_csv$truth_seeking))
 
 #lemmatize
 toks <- tokens(fully_scraped_analysis$link_text)    %>% 
@@ -48,7 +46,7 @@ dt_to_model <- convert(dfm_news, to = 'data.frame') %>%
 
 #add share by party
 dt_to_model_party <- dt_to_model %>% 
-  left_join(tweets_with_urls)
+  left_join(select(tweets_with_urls, url, party), by = c("url"))
 
 #check what articles were shared by both Reps and Dems
 dt_to_model_party_duplicates <- dt_to_model_party %>% 
@@ -69,4 +67,4 @@ dt_to_model_party_no_duplicates <- dt_to_model_party %>%
   anti_join(dt_to_model_party_duplicates)
 
 #write data
-data.table::fwrite(dt_to_model_party_no_duplicates, "articles_text_honesty.csv")
+data.table::fwrite(dt_to_model_party_no_duplicates, "articles_text_honesty_13_10_22.csv")
