@@ -28,6 +28,7 @@ def config(parser):
     parser.add_argument('--compression_type', type=str, default='infer')
     parser.add_argument('--length_threshold', type=int, default=10)
     parser.add_argument('--tab_delimiter', action="store_true")
+    parser.add_argument('--N_bootstrap', type=int, default=100)
     return parser 
 
 def preprocess(df, args):
@@ -42,6 +43,7 @@ def preprocess(df, args):
         df = df.drop_duplicates(subset='text',keep='first')
     if 'id' in df.columns:
         df = df.drop_duplicates(subset='id',keep='first')
+        df['id'] = df['id'].replace('"', '')
     if args.corpus == 'Twitter':
         if 'retweeted' in df.columns:
             df = df[~df.retweeted]
@@ -83,7 +85,7 @@ def reduce_keywords_by_frac(keywords, frac=0.2):
     sample_keywords = []
     n = (1-frac) * len(keywords)
     n = round(n)
-    for i in range(100):
+    for i in range(args.N_bootstrap):
         sample_keyword = random.sample(keywords, n)
         sample_keywords.append(sample_keyword)
     return sample_keywords
@@ -91,9 +93,19 @@ def reduce_keywords_by_frac(keywords, frac=0.2):
 def main(args):
     delimiter = '\t' if args.tab_delimiter else None
     if args.smoke_test:
-        df = pd.read_csv(args.input_file, nrows=1000, compression=args.compression_type, delimiter=delimiter)
+        df = pd.read_csv(
+            args.input_file, 
+            nrows=1000, 
+            compression=args.compression_type,
+            delimiter=delimiter
+        )
     else:
-        df = pd.read_csv(args.input_file, compression=args.compression_type, delimiter=delimiter)
+        df = pd.read_csv(
+            args.input_file, 
+            compression=args.compression_type, 
+            delimiter=delimiter
+        )
+        
     #rename text column if different from text
     if args.text_column != 'text':
         df.rename(columns = {args.text_column:'text'}, inplace = True)
@@ -101,14 +113,15 @@ def main(args):
     all_text = df['text']
     all_text = list(all_text)
     text_embeddings = get_embeddings(all_text, args.model_name_or_path)       
-    #keep only id fields
-    id_fields = ['id', 'author_id', 'conversation_id']
-    df = df[id_fields]
+
     if args.save_embeddings:
-        import pickle 
         output_fn = args.output_file.replace(".csv", ".pkl")
         with open(output_fn, "wb") as fout:
-            pickle.dump({'text': all_text, 'embeddings': text_embeddings}, fout, protocol=pickle.HIGHEST_PROTOCOL)
+            pickle.dump(
+                {'text': all_text, 'embeddings': text_embeddings},
+                fout, 
+                protocol=pickle.HIGHEST_PROTOCOL
+            )
 
     truth_keywords = pd.read_csv(args.truth_lexicon) 
 
@@ -148,15 +161,20 @@ def main(args):
     belief_keywords_sample = reduce_keywords_by_frac(belief_keywords)
     for i, belief_kw in enumerate(tqdm(belief_keywords_sample)):
         belief_embeddings = get_embeddings(belief_kw, args.model_name_or_path)
-        #print(belief_embeddings.shape)
         if args.avg_dict:
             belief_embeddings = torch.mean(belief_embeddings, dim=0)
-        #print(belief_embeddings.shape)
         belief_sim = util.cos_sim(text_embeddings, belief_embeddings)
         df[f'avg_belief_score_{i}'] = belief_sim.cpu().numpy()
 
- 
-    df.to_csv(args.output_file, index=False, compression=args.compression_type)
+    output_cols = ["id"] + \
+                  [f"avg_belief_score_{i}" for i in range(args.N_bootstrap)] + \
+                  [f"avg_truth_score_{i}" for i in range(args.N_bootstrap)]
+    df['id'] = df['id'].str.replace('"', '')
+    df[output_cols].to_csv(
+        args.output_file, 
+        index=False, 
+        compression=args.compression_type
+    )
         
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
