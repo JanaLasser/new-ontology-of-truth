@@ -1,0 +1,146 @@
+---
+title: "lmer_models_tweets"
+author: "Jana Lasser & Almog Simchon"
+date: "2022-11-04"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r imports}
+library(lme4)
+library(lmerTest)
+library(car)
+library(sjPlot)
+library(tidyverse)
+library(emmeans)
+library(interactions)
+```
+
+```{r read data}
+tweets_NG <- read.csv("../../data/tweets/tweets_for_lme_modelling_NG.csv", colClasses=c("author_id"="character"))
+tweets_independent <- read.csv("../../data/tweets/tweets_for_lme_modelling_independent.csv", colClasses=c("author_id"="character"))
+```
+
+
+```{r full model NewsGuard}
+model_NG <- lmer(NG ~ 1 + belief * truth + belief * truth * party + (1 + belief * truth|author_id), data=tweets_NG, control=lmerControl(optCtrl=list(maxfun=30000),optimizer="bobyqa" ))
+```
+
+```{r full model accuracy}
+model_acc <- lmer(accuracy ~ 1 + belief * truth + belief * truth * party + (1 + belief * truth|author_id), data=tweets_independent, control=lmerControl(optCtrl=list(maxfun=30000,algorithm="NLOPT_LN_NELDERMEAD") ))
+```
+
+```{r full model transparency}
+model_trans <- lmer(transparency ~ 1 + belief * truth + belief * truth * party + (1 + belief * truth|author_id), data=tweets_independent, control=lmerControl(optCtrl=list(maxfun=30000,optimizer="nmkb") ))
+```
+
+```{r statistics NG model}
+summary(model_NG)
+```
+```{r statistics NG model}
+ tab_model(model_NG, show.aic=TRUE, show.loglik=TRUE, digits=4)
+```
+```{r statistics NG model}
+BIC(model_NG)
+```
+
+```{r statistics accuracy model}
+summary(model_acc)
+```
+```{r}
+ tab_model(model_acc, show.aic=TRUE, show.loglik=TRUE, digits=4)
+```
+```{r}
+BIC(model_acc)
+```
+
+```{r}
+summary(model_trans)
+```
+```{r}
+ tab_model(model_trans, show.aic=TRUE, show.loglik=TRUE, digits=4)
+```
+```{r}
+BIC(model_trans)
+```
+
+
+```{r data visualization}
+
+#emmeans approach
+
+#define helper func
+sds_func <- function(x){
+  low <- mean(x, na.rm=T)-sd(x, na.rm=T)
+  med  <-  mean(x, na.rm=T)
+  high <- mean(x, na.rm=T)+sd(x, na.rm=T)
+  
+  return(c(low,med,high))
+}
+
+#plot
+emmeans::emmip(model_NG, belief~truth | party,
+      cov.reduce = list(belief = sds_func,
+                        truth = sds_func,
+                        party = unique), CIs=T) +
+  cowplot::theme_cowplot() +
+  scale_color_discrete(labels = c('-SD','Mean','+SD'))
+
+#interactions approach
+three_way <- interactions::interact_plot(model_NG, pred = belief, modx = party,
+                            mod2 = truth,
+                            interval = TRUE) +
+  scale_color_manual(values = c("#0015BC",
+                                "#FF0000")) +
+  scale_fill_manual(values = c("#0015BC",
+                                "#FF0000")) 
+
+
+
+df_three <- ggplot_build(three_way)
+
+#extract two-way interactions
+
+b_plot <- interactions::interact_plot(model_NG, pred = belief, modx = party,
+                            interval = TRUE) +
+  scale_color_manual(values = c("#0015BC",
+                                "#FF0000")) +
+  scale_fill_manual(values = c("#0015BC",
+                               "#FF0000")) +
+  ggtitle("Belief") +
+  theme(plot.title = element_text(hjust = 0.5))+
+  ylim(0.7,1)+
+  xlim(-1,0.5)
+
+t_plot <- interactions::interact_plot(model_NG, pred = truth, modx = party,
+                                      interval = TRUE) +
+  scale_color_manual(values = c("#0015BC",
+                                "#FF0000")) +
+  scale_fill_manual(values = c("#0015BC",
+                               "#FF0000")) +
+  ggtitle("Truth") +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  ylim(0.7,1)+
+  xlim(-1,0.5)
+
+#get data
+df_three <- ggplot_build(three_way) 
+df_three_raw <- df_three$plot$data
+
+df_belief <- ggplot_build(b_plot)
+df_belief_raw <- df_belief$plot$data
+
+
+df_truth <- ggplot_build(t_plot)
+df_truth_raw <- df_truth$plot$data
+
+
+
+#write_raw_data
+write_csv(df_belief_raw,"../../data/tweets/LME_predictions_tweets_belief.csv")
+write_csv(df_truth_raw,"../../data/tweets/LME_predictions_tweets_truth.csv")
+write_csv(df_three_raw,"../../data/tweets/LME_predictions_tweets_threeway.csv")
+```

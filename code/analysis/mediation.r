@@ -8,7 +8,7 @@ if (!require("pacman")) install.packages("pacman")
 pacman::p_load(tidyverse, mediation)
 
 #load data
-data_users <- read_csv("data/users/US_politician_accounts_2010-11-06_to_2022-03-16.csv")
+data_users <- read_csv("../../data/users/US_politician_accounts_2010-11-06_to_2022-03-16.csv")
 
 data_users <- data_users %>% 
   dplyr::select(author_id, party, NG_score_mean,
