@@ -45,13 +45,7 @@ truth_seeking_df <- read.csv("../../data/utilities/truth_seeking_p=0.05_swapped_
 
 b_keyword_list <- as.list(belief_speaking_df$`belief_speaking`) %>% .[!is.na(.)]
 t_keyword_list <- as.list(truth_seeking_df$`truth_seeking`) %>% .[!is.na(.)]
-
-#b_keyword_list <- as.list(updated_keywords$`belief_speaking`) %>% 
-#  .[!is.na(.)]
 b_keywords <- as.character(b_keyword_list)
-
-#t_keyword_list <- as.list(updated_keywords$`truth_seeking`) %>% 
-#  .[!is.na(.)]
 t_keywords <- as.character(t_keyword_list)
 
 # extracting dataframes from main one
