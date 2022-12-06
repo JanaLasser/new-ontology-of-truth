@@ -42,10 +42,11 @@ dt_to_model_party_no_duplicates <- dt_to_model_party %>%
   filter(party %in% c("Democrat" ,"Republican"),
          wc>=100) %>% #keep only articles with more than 100 words
   mutate(fishy = ifelse(Score<60, "fishy", "non_fishy")) %>% 
-  anti_join(dt_to_model_party_duplicates) %>% 
+#  anti_join(dt_to_model_party_duplicates) %>% 
   distinct()
 
 
 
 #write data
 data.table::fwrite(dt_to_model_party_no_duplicates, "../../data/articles/article_corpus_clean.csv.gz")
+#data.table::fwrite(fully_scraped_analysis, "../../data/articles/article_corpus_clean.csv.gz")
