@@ -41,8 +41,8 @@ def preprocess(df, args):
     df["text"].replace(to_replace=r"\s+", value=" ", regex=True, inplace=True)
     df["text"].replace(to_replace=r"\@\w+", value="@user", regex=True, inplace=True)
 
-    if 'text' in df.columns:
-        df = df.drop_duplicates(subset='text', keep='first')
+    #if 'text' in df.columns:
+    #    df = df.drop_duplicates(subset='text', keep='first')
     if 'id' in df.columns:
         df = df.drop_duplicates(subset='id', keep='first')
     if args.corpus == 'Twitter':
