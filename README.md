@@ -26,7 +26,7 @@ Therefore, the following scripts will only execute partly without aquiring the t
 * `analysis/bertopic_model.ipynb` (requires tweet texts)
 * `analysis/scattertext.R` (requires tweet texts)
 
-Irrespective of these restrictions we publish all data sets necessary to reproduce all figures in our manuscript, since these data sets need not contain original texts nor the NewsGuard data base. 
+Irrespective of these restrictions we publish all data sets necessary to reproduce all figures in our manuscript except for figure 1, since these data sets need not contain original texts nor the NewsGuard data base. 
 
 ### Restrictions on analysis reproducibility
 We cannot supply code to reproduce our computation of the LIWC labels for the "authentic", "analytic", "moral", "positive emotion" and "negative emotion" text components. This is due to the fact that LIWC is a proprietary software. Authors interested in reproducing our results should acquire access to [LIWC-22](https://www.liwc.app/) and apply it to the tweet texts. We do hoverwer supply the computed scors for the LIWC text components in the file `US_politician_tweets_2010-11-06_to_2022-03-16.csv.gzip`
@@ -62,12 +62,18 @@ Note that `wrangle_data.ipynb` also saves a file `articles/url_NG_scores.csv.gzi
 
 Scraped articles are stored in `articles/article_corpus_raw.rds.gz` and pre-processed by `article_preprocessing.R`. Pre-processing also reads the initial list of URLs for article scraping `articles/url_list_for_article_scraping.csv.gzip`, since this file also contains information about the party of the account that posted the link to the article. This information is needed to filter the articles retrieved from the URLs, since we only retain articles that were linked to by one party, not by both. The filtered articles are then stored in `articles/article_corpus_clean.csv.gzip` for later ingestion by ``label_glove840B_DDR.sh`.
 
+## Validation data
+Validation of the honesty component keywords is done via a survey on qualtrics. The results of the survey are stored in `data/validataion`.
+
 ## Analysis
+### Validation
+The dictionary validation shown in Supplementary Figures 1 & 2 is done in the script `analysis/validation.R`. The script ingests the files `validataion/validation_belief.csv` and `validation/validation_truth.csv`.
+
 ### Honesty components
 Honesty component similarities for the New York Times article corpus, the tweet corpus and the corpus of articles collected from URLs in the tweet corpus are calculated by the script `label_glove840B_DDR.sh`. The script internally calls `compute_sbert_avg_lexicon.py` with different parameters to specify settings for each corpus. The script `compute_sbert_avg_lexicon.py` ingests the file `tweets/combined_US_politician_twitter_timelines_2010-11-06_to_2022-03-16_clean.csv.gzip` and calculates honesty component similarity using the [glove](https://huggingface.co/sentence-transformers/average_word_embeddings_glove.840B.300d) sentence transformer embedding on the New York Times corpus, the tweet corpus and the article corpus. It outputs the honesty component similarity for every corpus in a file:
 * The output file `tweets/combined_US_politician_twitter_timelines_2010-11-06_to_2022-03-16_honesty_component_scores_glove.csv.gzip` is ingested by `wrangle_data.ipynb`. 
-* The output file `NYT/NYT_abstracts_honesty_component_scores_glove.csv` is ingested by `descriptive_dataset_statistics.ipynb`
-* The output file `articles/article_corpus_clean_honesty_component_scores_glove.csv.gzip` is ingested by `ORL_regression_articles.ipynb`
+* The output file `NYT/NYT_abstracts_honesty_component_scores_glove.csv` is ingested by `scrub_data_for_upload.ipynb`.
+* The output file `articles/article_corpus_clean_honesty_component_scores_glove.csv.gzip` is ingested by `scrub_data_for_upload.ipynb`.
 
 Note that for this to work you will need to download the [embeddings](https://huggingface.co/sentence-transformers/average_word_embeddings_glove.840B.300d) and place the respective models in the `data/utilities` directory.
 
@@ -76,7 +82,7 @@ We do not include the results of the dictionary robustness analysis here, due to
 
 The script `tweet_collection/wrangle_data.ipynb` includes a commented out section ("Add truth seeking & belief speaking scores for dictionary bootstraps") to include the dictionary robustness data `tweets/combined_US_politician_twitter_timelines_2010-11-06_to_2022-03-16_honesty_component_scores_glove_bootstrap.csv.gzip` in the data processing workflow. If you run `wrangle_data.ipynb` with these additional lines, it will load the output from `label_lexicon_loop.sh`, merge it to the rest of the tweet-level data and also include it in the final aggregated tweet data set `US_politician_tweets_2010-11-06_to_2022-03-16.csv.gzip`. 
 
-This file can then be loaded in `dictionary_robustness.ipynb` to fit the linear mixed effects model for every one of the 100 perturbed versions of each honesty components. The output of this script is the estimates for the fixed effects of the LME for each of the 100 dictionary versions, which is saved in `tweets/LME_results_dictionary_robustness.csv` and loaded in `analysis/plots.ipynb` to generate extended data figure 2.
+This file can then needs to be run through `scrub_data_for_upload.ipynb`. The resulting `tweets/tweets.csv` file can be loaded in `dictionary_robustness.ipynb` to fit the linear mixed effects model for every one of the 100 perturbed versions of each honesty components. The output of this script is the estimates for the fixed effects of the LME for each of the 100 dictionary versions, which is saved in `tweets/LME_results_dictionary_robustness.csv` and loaded in `analysis/plots.ipynb` to generate extended data figure 2.
  
 
 ### LIWC scores
@@ -85,7 +91,7 @@ We processed the full text of each tweet with LIWC-22, the latest version of the
 Scores are stored in the file `tweets/combined_US_politician_twitter_timelines_2010-11-06_to_2022-03-16_clean_mask_LIWC.csv.gzip` for later ingestion by `wrangle_data.ipynb`.
 
 ### Data wrangling
-The script `wrangle_data.ipynb` takes input from all previous data collection and analysis steps to create three output data files that aggregate all information for different downstream analysis tasks:
+The script `wrangle_data.ipynb` takes input from all previous data collection and analysis steps to create three output data files that aggregate most information for different downstream analysis tasks:
 
 * **Tweets**: contains all information pertaining to individual tweets and is stored at `tweets/US_politician_tweets_2010-11-06_to_2022-03-16.csv.gzip`. It contains the following columns:
     * `id`: unique tweet ID
@@ -126,7 +132,7 @@ The script `wrangle_data.ipynb` takes input from all previous data collection an
     * `NG_score`, `accuracy` and `transparency`: NewsGuard, accuracy and transparency score of the domain the URL pointed to, determined with the [NewsGuard](https://www.newsguardtech.com/de/) and [Independent](https://github.com/JanaLasser/misinformation_domains) of information quality.
     * `NG_unreliable` and `independent_unreliable`: Whether the URL pointed to an "unreliable" website, i.e. a website with a NewsGuard score < 60 or an accuracy score < 1.5 or a transparency score of < 2.5.
     
-When all data has been preprocessed, the files `US_politician_tweets_2010-11-06_to_2022-03-16.csv.gzip`, `US_politician_URLs_2010-11-06_to_2022-03-16.csv.gzip`, `article_corpus_clean_honesty_component_scores_glove.csv.gzip`, `url_NG_scores.csv.gzip`, `url_independent_scores.csv.gzip`, `NYT_abstracts_honesty_component_scores_glove.csv.gzip` and `NYT_abstracts.csv.gzip` are ingested by the script `scrub_data_for_upload.ipynb` to scrub the data from all columns that contain protected information (tweet texts and New York Time article abstracts) or would allow for a link between domains and NewsGuard scores. The script produces four clean files that are, together with `users/users.csv`, `tweets_for_lme_modelling_NG.csv.gzip` and `tweets_for_lme_modelling_independent.csv.gzip` from `wrangle_data.ipynb` provided in the OSF repository:
+When all data has been preprocessed, the files `US_politician_tweets_2010-11-06_to_2022-03-16.csv.gzip`, `US_politician_URLs_2010-11-06_to_2022-03-16.csv.gzip`, `article_corpus_clean_honesty_component_scores_glove.csv.gzip`, `url_NG_scores.csv.gzip`, `url_independent_scores.csv.gzip`, `NYT_abstracts_honesty_component_scores_glove.csv.gzip` and `NYT_abstracts.csv.gzip` are ingested by the script `scrub_data_for_upload.ipynb` to scrub the data from all columns that contain protected information (tweet texts and New York Time article abstracts) or would allow for a link between domains and NewsGuard scores. The script produces four clean files that are (together with `users/users.csv`, `tweets_for_lme_modelling_NG.csv.gzip` and `tweets_for_lme_modelling_independent.csv.gzip` from `wrangle_data.ipynb`) provided in the OSF repository:
 * `tweets/tweets.csv.gzip`
 * `urls/urls.csv.gzip`
 * `NYT/abstracts.csv.gzip`
@@ -180,8 +186,8 @@ All visualisations in the main manuscript, extended data and figures and supplem
 * `tweets/tweets.csv.gzip` (created by running `tweet_collection/wrangle_data.ipynb` with the code for the robustness analysis included and then running the data through `analysis/scrub_data_for_upload.ipynb` again, not provided in repository.)
 
 ### Extended Data Figure 3
-* `bootstrapping/NG_coverage.csv` (created by `analysis/bootstrapping.ipynb`, provided in repository)
-* `bootstrapping/independent_coverage.csv` (created by `analysis/bootstrapping.ipynb` , provided in repository)
+* `bootstrapping/NG_coverage.csv.gzip` (created by `analysis/bootstrapping.ipynb`, provided in repository)
+* `bootstrapping/independent_coverage.csv.gzip` (created by `analysis/bootstrapping.ipynb` , provided in repository)
 
 ### Extended Data Figure 4
 * `tweets/tweets.csv.gzip` (created by `analysis/scrub_data_for_upload.ipynb`, provided in repository) 
@@ -194,20 +200,24 @@ All visualisations in the main manuscript, extended data and figures and supplem
 * `validation/validation_truth.csv` (output from Qualtrics, provided in repository)
 
 ### Supplementary Figure 3
-* `bootstrapping/LIWC.csv` (created by `analysis/bootstrapping.ipynb`, provided in repository)
-* `bootstrapping/LIWC_belief.csv` (created by `analysis/bootstrapping.ipynb`, provided in repository)
-* `bootstrapping/LIWC_truth.csv` (created by `analysis/bootstrapping.ipynb`, provided in repository)
-* `bootstrapping/LIWC_neutral_belief.csv` (created by `analysis/bootstrapping.ipynb`, provided in repository)
-* `bootstrapping/LIWC_neutral_truth.csv` (created by `analysis/bootstrapping.ipynb`, provided in repository)
+* `bootstrapping/LIWC.csv.gzip` (created by `analysis/bootstrapping.ipynb`, provided in repository)
+* `bootstrapping/LIWC_belief.csv.gzip` (created by `analysis/bootstrapping.ipynb`, provided in repository)
+* `bootstrapping/LIWC_truth.csv.gzip` (created by `analysis/bootstrapping.ipynb`, provided in repository)
+* `bootstrapping/LIWC_neutral_belief.csv.gzip` (created by `analysis/bootstrapping.ipynb`, provided in repository)
+* `bootstrapping/LIWC_neutral_truth.csv.gzip` (created by `analysis/bootstrapping.ipynb`, provided in repository)
 
 ### Supplementary Figure 4
 * `bootstrapping/LIWC.csv` (created by `analysis/bootstrapping.ipynb`, provided in repository)
 * `bootstrapping/LIWC_belief.csv` (created by `analysis/bootstrapping.ipynb`, provided in repository)
-* `bootstrapping/LIWC_truth.csv` (created by `analysis/bootstrapping.ipynb`, provided in repository)
-* `bootstrapping/LIWC_neutral_belief.csv` (created by `analysis/bootstrapping.ipynb`, provided in repository)
-* `bootstrapping/LIWC_neutral_truth.csv` (created by `analysis/bootstrapping.ipynb`, provided in repository)
+* `bootstrapping/LIWC_truth.csv.gzip` (created by `analysis/bootstrapping.ipynb`, provided in repository)
+* `bootstrapping/LIWC_neutral_belief.csv.gzip` (created by `analysis/bootstrapping.ipynb`, provided in repository)
+* `bootstrapping/LIWC_neutral_truth.csv.gzip` (created by `analysis/bootstrapping.ipynb`, provided in repository)
 
 ### Supplementary Figure 5
-TODO
-* `tweets/topics_all_docs.csv.gzip`
-* `tweets/US_politician_tweets_2010-11-06_to_2022-03-16.csv.gzip`
+* `tweets/topics_all_docs.csv.gzip` (created by `analysis/bertopic_model.ipynb`, provided in repository)
+* `tweets/topics_per_class_ddr.csv` (created by `analysis/bertopic_model.ipynb`, provided in repository)
+
+### Supplementary Figure 6
+* `users/users.csv` (created by `analysis/scrub_data_for_upload.ipynb`, provided in repository) 
+* `utilities/state_names.csv` (provided in `utilities`)
+* `utilities/popular_vote_2020.csv` (provided in `utilities`)
