@@ -1,4 +1,4 @@
-# New conceptions of truth foster misinformation in online public political discourse
+# From Alternative conceptions of honesty to alternative facts in communications by U.S. politicians
 
 Data collection and analysis code for the article "A new ontology of truth shifts public political discourse towards misinformation".
 
