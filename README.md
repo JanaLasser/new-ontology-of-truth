@@ -38,10 +38,12 @@ The repository is organized into the two top-level folders `code` and `plots`. T
 * `article_collection` contains all scripts necessary to collect articles from the URLs in the tweets data set and wrangle them into a form suitable for further processing.
 * `analysis` contains scripts for
     * calculating descriptive dataset statistics `descriptive_dataset_statistics.ipynb` 
-    * labelling tweets by their honesty componnents: `label_glove840B_DDR.sh` and `compute_sbert_avg_lexicon.py`
+    * calculating honesty component similarity with various embeddings: `label_glove840B_DDR.sh`, `label_fasttext-cc_DDR.sh`, `label_word2vec-googlenews_DDR.sh` and `compute_sbert_avg_lexicon.py`
+    * calculating keyword similarity: `label_lexicon_single_word.sh` and `compute_sbert_avg_lexicon_reduce_lexicon_single_word.py`
+    * validating honsty components with human ratings: `validation.R` `document_level_validation.ipynb` (drawing the sample) and `document_level_validation.R` (analysis)
     * bootstrapping: `bootstrapping.ipynb`
     * statistical modelling: `lmer_models_tweets.Rmd`, `OLS_regression_articles.ipynb` and `mediation.R`
-    * assessing dictionary robustness `label_lexicon_loop.sh` and `compute_sbert_avg_lexicon_reduce_lexcion_loop.sh`
+    * assessing dictionary robustness `label_lexicon_loop.sh`, `compute_sbert_avg_lexicon_reduce_lexcion_loop.sh` and `compute_sbert_avg_lexicon_reduce_lexicon_loop.py`
     * topic modelling with BERTtopic: `bertopic_model.ipynb`
     * reproducing all plots from the article: `plots.ipynb` and `scattertext.R`
     * scrubbing all protected information from the data sets for public upload: `scrub_data_for_upload.ipynb`
@@ -51,7 +53,7 @@ The repository is organized into the two top-level folders `code` and `plots`. T
 Collection of Twitter user accounts associated with members of the U.S. congress is accompished in the script `get_US_politician_twitter_accounts.ipynb`. We combine lists of accounts from different sources such as [socialseer](https://www.socialseer.com), manually inspect and clean the data and download the account profiles using the Twitter API. Account information is stored in the file `users/US_politician_twitter_accounts_clean.csv` for later ingestion by `wrangle_data.ipynb`. 
 
 ### Collecting user timelines
-Next, we collect the timelines of all tweets from all accounts in the script `get_US_politician_twitter_timelines.ipynb`. Since we are interested in tweets from November 6, 2010 to March 16, 2022, we make use of access to historic tweets via the academiv Twitter v2 API access. We use the Python library [twarc](https://twarc-project.readthedocs.io/en/latest/twarc2_en_us/) to collect the tweets and store them after some basic cleaning steps. Cleaned timelines are stored in the file `tweets/combined_US_politician_twitter_timelines_2010-11-06_to_2022-03-16_clean.csv.gzip` for later ingestion by `wrangle_data.ipynb`. 
+Next, we collect the timelines of all tweets from all accounts in the script `get_US_politician_twitter_timelines.ipynb`. Since we are interested in tweets from November 6, 2010 to December 31, 2022, we make use of access to historic tweets via the academiv Twitter v2 API access. We use the Python library [twarc](https://twarc-project.readthedocs.io/en/latest/twarc2_en_us/) to collect the tweets and store them after some basic cleaning steps. Cleaned timelines are stored in the file `tweets/combined_US_politician_twitter_timelines_2010-11-06_to_2022-12-31_clean.csv.gzip` for later ingestion by `wrangle_data.ipynb`. 
 
 A large part of our research relies on the quality of links shared by Congress Members. A large number of URLs are shared in shortened form, using a link shortening service such as bit.ly. We have also observed that links to low-quality websites are much more likely to be shortened than links to high-quality sites. We therefore follow all shortened links to retrieve their true domain. We identify shortened links using a [data base of link shorteners](https://github.com/boutetnico/url-shorteners). In addition, we manually inspect all domains that were tweeted > 100 times and look for additional link shortening services that were not contained in the initial data base of shorteners. The thus retrieved "unraveled" URLs are stored in the file `urls/US_unraveled_urls.csv.xz` for later ingestion by `wrangle_data.ipynb`.
 
@@ -63,45 +65,44 @@ Note that `wrangle_data.ipynb` also saves a file `articles/url_NG_scores.csv.gzi
 Scraped articles are stored in `articles/article_corpus_raw.rds.gz` and pre-processed by `article_preprocessing.R`. Pre-processing also reads the initial list of URLs for article scraping `articles/url_list_for_article_scraping.csv.gzip`, since this file also contains information about the party of the account that posted the link to the article. This information is needed to filter the articles retrieved from the URLs, since we only retain articles that were linked to by one party, not by both. The filtered articles are then stored in `articles/article_corpus_clean.csv.gzip` for later ingestion by ``label_glove840B_DDR.sh`.
 
 ## Validation data
-Validation of the honesty component keywords is done via a survey on qualtrics. The results of the survey are stored in `data/validataion`.
+Validation of the honesty component keywords and documents is done via a survey on qualtrics. The results of the survey are stored in `data/validataion`.
 
 ## Analysis
 ### Validation
-The dictionary validation shown in Supplementary Figures 1 & 2 is done in the script `analysis/validation.R`. The script ingests the files `validataion/validation_belief.csv` and `validation/validation_truth.csv`.
+The dictionary validation shown in Supplementary Figures 1 & 2 is done in the script `analysis/keyword_validation.R`. The script ingests the files `validation/validation_belief.csv` and `validation/validation_truth.csv`. The sample for the document level validation is created in the script `analysis/document_level_validation.ipynb`. The document level validation analysis, which is shown in supplementary figures S3-S6, is done in the script `analysis/document_level_validation.R`, which ingests the sample file `validation/document_validation_sample.csv` and `validation/document_validation_data.csv`.
 
 ### Honesty components
-Honesty component similarities for the New York Times article corpus, the tweet corpus and the corpus of articles collected from URLs in the tweet corpus are calculated by the script `label_glove840B_DDR.sh`. The script internally calls `compute_sbert_avg_lexicon.py` with different parameters to specify settings for each corpus. The script `compute_sbert_avg_lexicon.py` ingests the file `tweets/combined_US_politician_twitter_timelines_2010-11-06_to_2022-03-16_clean.csv.gzip` and calculates honesty component similarity using the [glove](https://huggingface.co/sentence-transformers/average_word_embeddings_glove.840B.300d) sentence transformer embedding on the New York Times corpus, the tweet corpus and the article corpus. It outputs the honesty component similarity for every corpus in a file:
-* The output file `tweets/combined_US_politician_twitter_timelines_2010-11-06_to_2022-03-16_honesty_component_scores_glove.csv.gzip` is ingested by `wrangle_data.ipynb`. 
+Honesty component similarities for the New York Times article corpus, the tweet corpus and the corpus of articles collected from URLs in the tweet corpus are calculated by the scripts `label_glove840B_DDR.sh`. In addition, the scripts `label_fasttext-cc_DDR.sh` and `label_word2vec-googlenews_DDR.sh` also calcupate honesty component similarities for the tweet corpus based on alternative embeddings ([word2vec](https://huggingface.co/fse/word2vec-google-news-300) and [fasttext](https://fasttext.cc/docs/en/crawl-vectors.html)). The scripts internally call `compute_sbert_avg_lexicon.py` with different parameters to specify settings for each corpus. The script `compute_sbert_avg_lexicon.py` ingests the file `tweets/combined_US_politician_twitter_timelines_2010-11-06_to_2022-12-31_clean.csv.gzip` and calculates honesty component similarity using the [glove](https://huggingface.co/sentence-transformers/average_word_embeddings_glove.840B.300d) sentence transformer embedding on the New York Times corpus, the tweet corpus and the article corpus. It outputs the honesty component similarity for every corpus in a file:
+* The output file `tweets/combined_US_politician_twitter_timelines_2010-11-06_to_2022-12-31_honesty_component_scores_glove.csv.gzip` is ingested by `wrangle_data.ipynb`. 
 * The output file `NYT/NYT_abstracts_honesty_component_scores_glove.csv` is ingested by `scrub_data_for_upload.ipynb`.
 * The output file `articles/article_corpus_clean_honesty_component_scores_glove.csv.gzip` is ingested by `scrub_data_for_upload.ipynb`.
 
-Note that for this to work you will need to download the [embeddings](https://huggingface.co/sentence-transformers/average_word_embeddings_glove.840B.300d) and place the respective models in the `data/utilities` directory.
+Note that for this to work you will need to download the embeddings and place the respective models in the `data/utilities/sentence-transformers` directory.
 
 ### Dictonary robustness
-We do not include the results of the dictionary robustness analysis here, due to the size of the generated data. You can however reproduce the results by running the script `label_lexicon_loop.sh`, which also ingests the file `tweets/combined_US_politician_twitter_timelines_2010-11-06_to_2022-03-16_clean.csv.gzip`. This calculates honesty component similarity using the [glove](https://huggingface.co/sentence-transformers/average_word_embeddings_glove.840B.300d) sentence transformer embedding, but for 100 perturbed versions of the belief-speaking and truth-seeking dictionaries. Note that for this to work you will need to download the [embeddings](https://huggingface.co/sentence-transformers/average_word_embeddings_glove.840B.300d) and place the respective models in the `data/utilities` directory.
+We do not include the results of the dictionary robustness analysis here, due to the size of the generated data. You can however reproduce the results by running the script `label_lexicon_loop.sh`, which also ingests the file `tweets/combined_US_politician_twitter_timelines_2010-11-06_to_2022-12-31_clean.csv.gzip`. This calculates honesty component similarity using the [glove](https://huggingface.co/sentence-transformers/average_word_embeddings_glove.840B.300d) sentence transformer embedding, but for 100 perturbed versions of the belief-speaking and truth-seeking dictionaries. Note that for this to work you will need to download the [embeddings](https://huggingface.co/sentence-transformers/average_word_embeddings_glove.840B.300d) and place the respective models in the `data/utilities` directory.
 
-The script `tweet_collection/wrangle_data.ipynb` includes a commented out section ("Add truth seeking & belief speaking scores for dictionary bootstraps") to include the dictionary robustness data `tweets/combined_US_politician_twitter_timelines_2010-11-06_to_2022-03-16_honesty_component_scores_glove_bootstrap.csv.gzip` in the data processing workflow. If you run `wrangle_data.ipynb` with these additional lines, it will load the output from `label_lexicon_loop.sh`, merge it to the rest of the tweet-level data and also include it in the final aggregated tweet data set `US_politician_tweets_2010-11-06_to_2022-03-16.csv.gzip`. 
+The script `tweet_collection/wrangle_data.ipynb` includes a commented out section ("Add truth seeking & belief speaking scores for dictionary bootstraps") to include the dictionary robustness data `tweets/combined_US_politician_twitter_timelines_2010-11-06_to_2022-12-31_honesty_component_scores_glove_bootstrap.csv.gzip` in the data processing workflow. If you run `wrangle_data.ipynb` with these additional lines, it will load the output from `label_lexicon_loop.sh`, merge it to the rest of the tweet-level data and also include it in the final aggregated tweet data set `US_politician_tweets_2010-11-06_to_2022-12-31.csv.gzip`. 
 
-This file can then needs to be run through `scrub_data_for_upload.ipynb`. The resulting `tweets/tweets.csv` file can be loaded in `dictionary_robustness.ipynb` to fit the linear mixed effects model for every one of the 100 perturbed versions of each honesty components. The output of this script is the estimates for the fixed effects of the LME for each of the 100 dictionary versions, which is saved in `tweets/LME_results_dictionary_robustness.csv` and loaded in `analysis/plots.ipynb` to generate extended data figure 2.
+This file then needs to be run through `scrub_data_for_upload.ipynb`. The resulting `tweets/tweets.csv` file can be loaded in `dictionary_robustness.ipynb` to fit the linear mixed effects model for every one of the 100 perturbed versions of each honesty components. The output of this script is the estimates for the fixed effects of the LME for each of the 100 dictionary versions, which is saved in `tweets/LME_results_dictionary_robustness.csv` and loaded in `analysis/plots.ipynb` to generate extended data figure 2.
  
 
 ### LIWC scores
 We processed the full text of each tweet with LIWC-22, the latest version of the Linguistic Inquiry and Word Count Software [LIWC-22](https://www.liwc.app/). We exported the text of each tweet to a csv file with one row per tweet and two columns, one with the tweet id as a string and the second with the string containing the tweet text. We imported this file to LIWC-22 and processed only the column with the tweet text using the LIWC-22 English dictionary for the "authentic", "analytic", "moral", "positive emotion" and "negative emotion" text components. The result was exported as a csv file including additional columns for each LIWC metric for each tweet. We used this csv file in later statistical analyses.
 
-Scores are stored in the file `tweets/combined_US_politician_twitter_timelines_2010-11-06_to_2022-03-16_clean_mask_LIWC.csv.gzip` for later ingestion by `wrangle_data.ipynb`.
+Scores are stored in the file `tweets/combined_US_politician_twitter_timelines_2010-11-06_to_2022-12-31_clean_mask_LIWC.csv.gzip` for later ingestion by `wrangle_data.ipynb`.
 
 ### Data wrangling
 The script `wrangle_data.ipynb` takes input from all previous data collection and analysis steps to create three output data files that aggregate most information for different downstream analysis tasks:
 
-* **Tweets**: contains all information pertaining to individual tweets and is stored at `tweets/US_politician_tweets_2010-11-06_to_2022-03-16.csv.gzip`. It contains the following columns:
+* **Tweets**: contains all information pertaining to individual tweets and is stored at `tweets/US_politician_tweets_2010-11-06_to_2022-12-31.csv.gzip`. It contains the following columns:
     * `id`: unique tweet ID
     * `author_id`: unique ID of the author that posted the given tweet. Used to link to the user data file described above.
     * `party`: party affiliation of the account that posted the tweet.
     * `created_at`: tweet creation time in UTZ time.
     * `retweeted`, `quoted` and `reply`: whether the tweet is a retweet, quote-tweet or reply. Note that these categories are not exclusive.
-    * `avg_belief_score` and `avg_truth_score`: float, similarity to the belief-speaking and truth-seeking dictionaries. If the robustness analysis is included (see section "Dictionary robustness" above), there are columns with similarity scores calculated using perturbed dictionaries `avg_belief_score_i` and `avg_truth_score_i`, where i ranges from 0 to 99.
+    * `avg_belief_score` and `avg_truth_score`: float, similarity to the belief-speaking and truth-seeking dictionaries. If the robustness analysis is included (see section "Dictionary robustness" above), there are columns with similarity scores calculated using perturbed dictionaries `avg_belief_score_i` and `avg_truth_score_i`, where i ranges from 0 to 99. In addition `avg_belief_score_word2vec`, `avg_truth_score_word2vec`, `avg_belief_score_fasttext` and `avg_truth_score_fasttext` contain the similarity ratings calculated with the word2vec and fasttext embeddings instead of GLoVe.
     * `has_url`: bool, whether the tweet contained an URL. 
-    * `word_count`: number of words in the tweet text
     * `LIWC_analytic`, `LIWC_authentic`, `LIWC_moral`, `LIWC_emo_pos`, and `LIWC_emo_neg`: LIWC scores for the text components "analytic", "authentic", "moral", "positive emotions" and "negative emotions" determined using the [LIWC-22](https://www.liwc.app/) software.
     * `NG_score`: float. Only exists for tweets that contained an URL. NewsGuard score determined by matching the domain contained in the URL against the [NewsGuard database](https://www.newsguardtech.com/de/) of information quality. If the tweet contained more than one URL with a NewsGuard score, the scores are averaged.
     * `transparency` and `accuracy`: float. Only exists for tweets that contained an URL. Accuracy and transparency score determined by matching the domain contained in the URL against the [Independent information quality database](https://github.com/JanaLasser/misinformation_domains). If the tweet contained more than one URL with an accuracy and transparency score, the scores are averaged.
@@ -132,7 +133,7 @@ The script `wrangle_data.ipynb` takes input from all previous data collection an
     * `NG_score`, `accuracy` and `transparency`: NewsGuard, accuracy and transparency score of the domain the URL pointed to, determined with the [NewsGuard](https://www.newsguardtech.com/de/) and [Independent](https://github.com/JanaLasser/misinformation_domains) of information quality.
     * `NG_unreliable` and `independent_unreliable`: Whether the URL pointed to an "unreliable" website, i.e. a website with a NewsGuard score < 60 or an accuracy score < 1.5 or a transparency score of < 2.5.
     
-When all data has been preprocessed, the files `US_politician_tweets_2010-11-06_to_2022-03-16.csv.gzip`, `US_politician_URLs_2010-11-06_to_2022-03-16.csv.gzip`, `article_corpus_clean_honesty_component_scores_glove.csv.gzip`, `url_NG_scores.csv.gzip`, `url_independent_scores.csv.gzip`, `NYT_abstracts_honesty_component_scores_glove.csv.gzip` and `NYT_abstracts.csv.gzip` are ingested by the script `scrub_data_for_upload.ipynb` to scrub the data from all columns that contain protected information (tweet texts and New York Time article abstracts) or would allow for a link between domains and NewsGuard scores. The script produces four clean files that are (together with `users/users.csv`, `tweets_for_lme_modelling_NG.csv.gzip` and `tweets_for_lme_modelling_independent.csv.gzip` from `wrangle_data.ipynb`) provided in the OSF repository:
+When all data has been preprocessed, the files `US_politician_tweets_2010-11-06_to_2022-12-131.csv.gzip`, `US_politician_URLs_2010-11-06_to_2022-12-31.csv.gzip`, `article_corpus_clean_honesty_component_scores_glove.csv.gzip`, `url_NG_scores.csv.gzip`, `url_independent_scores.csv.gzip`, `NYT_abstracts_honesty_component_scores_glove.csv.gzip` and `NYT_abstracts.csv.gzip` are ingested by the script `scrub_data_for_upload.ipynb` to scrub the data from all columns that contain protected information (tweet texts and New York Time article abstracts) or would allow for a link between domains and NewsGuard scores. The script produces four clean files that are (together with `users/users.csv`, `tweets_for_lme_modelling_NG.csv.gzip` and `tweets_for_lme_modelling_independent.csv.gzip` from `wrangle_data.ipynb`) provided in the OSF repository:
 * `tweets/tweets.csv.gzip`
 * `urls/urls.csv.gzip`
 * `NYT/abstracts.csv.gzip`
@@ -154,17 +155,17 @@ For articles we use a linear regressions model that are fitted using an ordinary
 Mediation analysis is performed in the script `analysis/mediation.r`. The script ingests the file `users/users.csv` and outputs the summary statistics of the mediation analysis.
        
 ### Topic modelling
-Before further analysis of the texts can be performed, the texts first need to be lemmatized. This is done in the script `tweet_collection/wrangle_data.ipynb`. The script   outputs the file `tweets/combined_US_politician_twitter_timelines_2010-11-06_to_2022-03-16_lemma.csv.gzip`, which is used by `bertopic_model.ipyb`. Topic modelling is performed using the library [BERTopic](https://github.com/MaartenGr/BERTopic). The fitted model is saved at `tweets/BERTopic_model` for later re-use, since fitting the model takes a while. 
+Before further analysis of the texts can be performed, the texts first need to be lemmatized. This is done in the script `tweet_collection/wrangle_data.ipynb`. The script   outputs the file `tweets/combined_US_politician_twitter_timelines_2010-11-06_to_2022-12-31_lemma.csv.gzip`, which is used by `bertopic_model.ipyb`. Topic modelling is performed using the library [BERTopic](https://github.com/MaartenGr/BERTopic). The fitted model is saved at `tweets/BERTopic_model` for later re-use, since fitting the model takes a while. 
 
 The script outputs two results files: `tweets/topics_all_docs.csv.gzip` and `tweets/topics_per_class_ddr.csv`, which are used by `plots.ipynb` to visualize topics in Supplementary Figure 5.
 
 ## Descriptive statistics & plots
 Descriptive statistics of the various data sets used in our analysis and reported in the paper are calculated in the script `analysis/descriptive_dataset_statistics.ipynb`. The script also contains additional descriptive visualisations not contained in the article.
 
-All visualisations in the main manuscript, extended data and figures and supplement except for Figure 1 and Supplementary Figures 1 & 2 are created in the script `plots.ipynb` and saved in the folder `plots`. Figure 1 is created by `scattertext.R`. Supplementary Figures 1 & 2 are created by `validation.R`. The scripts ingest the following files to create the figures:
+All visualisations in the main manuscript, extended data and figures and supplement except for Figure 1 and Supplementary Figures 1 & 2 are created in the script `plots.ipynb` and saved in the folder `plots`. Figure 1 is created by `scattertext.R`. Supplementary Figures 1 & 2 are created by `keyword_validation.R` and Supplemengary Figures 3, 4, 5 and 6 are created by `document_level_validation.R`. The scripts ingest the following files to create the figures:
 
 ### Figure 1
-* `tweets/combined_US_politician_twitter_timelines_2010-11-06_to_2022-03-16_lemma.csv.gzip' (created by `tweet_collection/wrangle_data.ipynb`, not provided in repository) 
+* `tweets/combined_US_politician_twitter_timelines_2010-11-06_to_2022-12-31_lemma.csv.gzip' (created by `tweet_collection/wrangle_data.ipynb`, not provided in repository) 
 
 ### Figure 2
 * `users/users.csv` (created by `tweet_collection/wrangle_data.ipynb`, provided in repository)
@@ -173,7 +174,6 @@ All visualisations in the main manuscript, extended data and figures and supplem
 
 ### Figure 3
 * `tweets/tweets.csv.gzip` (created by `analysis/scrub_data_for_upload.ipynb`, provided in repository) 
-* `tweets/LME_predictions_tweets_belief.csv` (created by `analysis/lmer_models_tweets.Rmd`, provided in repository)
 * `tweets/LME_predictions_tweets_belief.csv` (created by `analysis/lmer_models_tweets.Rmd`, provided in repository)
 * `articles/articles.csv.gzip` (created by `analysis/scrub_data_for_upload.ipynb`, provided in repository)
 * `articles/OLS_predictions_articles.csv` (created by `analysis/OLS_regression_articles.ipynb`, provided in repository)
@@ -199,25 +199,36 @@ All visualisations in the main manuscript, extended data and figures and supplem
 ### Supplementary Figure 2
 * `validation/validation_truth.csv` (output from Qualtrics, provided in repository)
 
-### Supplementary Figure 3
+### Supplementary Figure 3, 4, 5 and 6
+* `validation/document_validation_sample.csv` (created by `analysis/document_level_validation.ipynb`, provided in repository)
+* `validation/document_validation_data.csv` (output from Qualtrics, provided in repository)
+
+### Supplementary Figure 7
 * `bootstrapping/LIWC.csv.gzip` (created by `analysis/bootstrapping.ipynb`, provided in repository)
 * `bootstrapping/LIWC_belief.csv.gzip` (created by `analysis/bootstrapping.ipynb`, provided in repository)
 * `bootstrapping/LIWC_truth.csv.gzip` (created by `analysis/bootstrapping.ipynb`, provided in repository)
 * `bootstrapping/LIWC_neutral_belief.csv.gzip` (created by `analysis/bootstrapping.ipynb`, provided in repository)
 * `bootstrapping/LIWC_neutral_truth.csv.gzip` (created by `analysis/bootstrapping.ipynb`, provided in repository)
 
-### Supplementary Figure 4
+### Supplementary Figure 8
 * `bootstrapping/LIWC.csv` (created by `analysis/bootstrapping.ipynb`, provided in repository)
 * `bootstrapping/LIWC_belief.csv` (created by `analysis/bootstrapping.ipynb`, provided in repository)
 * `bootstrapping/LIWC_truth.csv.gzip` (created by `analysis/bootstrapping.ipynb`, provided in repository)
 * `bootstrapping/LIWC_neutral_belief.csv.gzip` (created by `analysis/bootstrapping.ipynb`, provided in repository)
 * `bootstrapping/LIWC_neutral_truth.csv.gzip` (created by `analysis/bootstrapping.ipynb`, provided in repository)
 
-### Supplementary Figure 5
+### Supplementary Figure 9
 * `tweets/topics_all_docs.csv.gzip` (created by `analysis/bertopic_model.ipynb`, provided in repository)
 * `tweets/topics_per_class_ddr.csv` (created by `analysis/bertopic_model.ipynb`, provided in repository)
 
-### Supplementary Figure 6
+### Supplementary Figure 10
 * `users/users.csv` (created by `analysis/scrub_data_for_upload.ipynb`, provided in repository) 
 * `utilities/state_names.csv` (provided in `utilities`)
 * `utilities/popular_vote_2020.csv` (provided in `utilities`)
+
+### Supplementary Figure 11
+* `users/users.csv` (created by `tweet_collection/wrangle_data.ipynb`, provided in repository)
+
+### Supplementary Figure 12
+* `tweets/combined_US_politician_twitter_timelines_2010-11-06_to_2022-12-31_honesty_component_scores_glove_singleword.csv.gzip` (created by `label_lexicon_single_word.sh`, not provided in the repository)
+* `US_politician_tweets_2010-11-06_to_2022-12-31.csv.gzip` (created by `wrangle_data.ipynb`, not provided in the repository)
