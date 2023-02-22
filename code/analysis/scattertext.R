@@ -9,6 +9,7 @@ library(scales)
 library(ggplot2)
 library(ggrepel)
 library(psych)
+library(plotly)
 
 
 create_freq_table <- function(dataframe, stopwords) {
@@ -34,12 +35,11 @@ create_freq_table <- function(dataframe, stopwords) {
 
 
 # importing data
-df <- read.csv("../../data/tweets/combined_US_politician_twitter_timelines_2010-11-06_to_2022-03-16_lemma.csv.gzip", encoding = "UTF-8")
+df <- read.csv("../../data/tweets/combined_US_politician_twitter_timelines_2010-11-06_to_2022-12-31_lemma.csv.gzip", encoding = "UTF-8")
 
 # setting stopwords (from English and component dictionary keywords)
 marimo <- readLines("../../data/utilities/marimo.txt")
 en_stopwords <- readLines("../../data/utilities/stopwords_en.txt")
-#updated_keywords <- readxl::read_excel("C:\\Users\\so21363\\OneDrive - University of Bristol\\Desktop\\Bristol\\Honesty\\Keywords\\qualtrics_keywords.xlsx")
 belief_speaking_df <- read.csv("../../data/utilities/belief_speaking_p=0.05_swapped_wn_def_example.csv")
 truth_seeking_df <- read.csv("../../data/utilities/truth_seeking_p=0.05_swapped_wn_def_example.csv")
 
@@ -155,4 +155,4 @@ st_plot
 
 ggplotly(st_plot, tooltip = "text")
 
-ggsave(file="../../plots/fig1.svg", plot=st_plot, width=10, height=7)
+ggsave(file="../../plots/fig1.svg", plot=st_plot, width=9, height=5)
