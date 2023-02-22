@@ -4,9 +4,9 @@ library(broom)
 library(verification)
 library(pROC)
 
-Document_Level_Honesty_Validation <- read_csv("../../data/tweets/document_validation_data.csv")
+Document_Level_Honesty_Validation <- read_csv("../../data/validation/document_validation_data.csv")
 
-document_validation_sample <- read_csv("../../data/tweets/document_validation_sample.csv")
+document_validation_sample <- read_csv("../../data/validation/document_validation_sample.csv")
 
 attention_check_df <- Document_Level_Honesty_Validation %>% 
   filter(`Q5.1#1_30` == 5 & `Q5.1#2_30` == 5)
