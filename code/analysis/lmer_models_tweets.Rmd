@@ -22,6 +22,7 @@ library(interactions)
 ```{r read data}
 tweets_NG <- read.csv("../../data/tweets/tweets_for_lme_modelling_NG.csv", colClasses=c("author_id"="character"))
 tweets_independent <- read.csv("../../data/tweets/tweets_for_lme_modelling_independent.csv", colClasses=c("author_id"="character"))
+tweets_emb <- read.csv("../../data/tweets/tweets_for_lme_modelling_other_embeddings.csv", colClasses=c("author_id"="character"))
 ```
 
 
@@ -30,11 +31,19 @@ model_NG <- lmer(NG ~ 1 + belief * truth + belief * truth * party + (1 + belief 
 ```
 
 ```{r full model accuracy}
-model_acc <- lmer(accuracy ~ 1 + belief * truth + belief * truth * party + (1 + belief * truth|author_id), data=tweets_independent, control=lmerControl(optCtrl=list(maxfun=30000,algorithm="NLOPT_LN_NELDERMEAD") ))
+model_acc <- lmer(accuracy ~ 1 + belief * truth + belief * truth * party + (1 + belief * truth|author_id), data=tweets_independent, control=lmerControl(optCtrl=list(maxfun=30000, optimizer="bobyqa") ))
 ```
 
 ```{r full model transparency}
-model_trans <- lmer(transparency ~ 1 + belief * truth + belief * truth * party + (1 + belief * truth|author_id), data=tweets_independent, control=lmerControl(optCtrl=list(maxfun=30000,optimizer="nmkb") ))
+model_trans <- lmer(transparency ~ 1 + belief * truth + belief * truth * party + (1 + belief * truth|author_id), data=tweets_independent, control=lmerControl(optCtrl=list(maxfun=30000, algorithm="NLOPT_LN_NELDERMEAD") ))
+```
+
+```{r full model word2vec}
+model_word2vec <- lmer(NG ~ 1 + belief_word2vec * truth_word2vec + belief_word2vec * truth_word2vec * party + (1 + belief_word2vec * truth_word2vec|author_id), data=tweets_emb, control=lmerControl(optCtrl=list(maxfun=30000),optimizer="bobyqa" ))
+```
+
+```{r full model fasttext}
+model_fasttext <- lmer(NG ~ 1 + belief_fasttext * truth_fasttext + belief_fasttext * truth_fasttext * party + (1 + belief_fasttext * truth_fasttext|author_id), data=tweets_emb, control=lmerControl(optCtrl=list(maxfun=30000),optimizer="bobyqa" ))
 ```
 
 ```{r statistics NG model}
@@ -66,7 +75,25 @@ summary(model_trans)
 ```{r}
 BIC(model_trans)
 ```
+```{r statistics word2vec model}
+summary(model_word2vec)
+```
+```{r statistics word2vec model}
+ tab_model(model_word2vec, show.aic=TRUE, show.loglik=TRUE, digits=4)
+```
+```{r statistics word2vec model}
+BIC(model_word2vec)
+```
 
+```{r statistics fasttext model}
+summary(model_fasttext)
+```
+```{r statistics fasttext model}
+ tab_model(model_fasttext, show.aic=TRUE, show.loglik=TRUE, digits=4)
+```
+```{r statistics fasttext model}
+BIC(model_fasttext)
+```
 
 ```{r data visualization}
 
