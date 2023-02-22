@@ -97,13 +97,15 @@ def main(args):
             args.input_file, 
             nrows=1000, 
             compression=args.compression_type,
-            delimiter=delimiter
+            delimiter=delimiter,
+            dtype={"id":str}
         )
     else:
         df = pd.read_csv(
             args.input_file, 
             compression=args.compression_type, 
-            delimiter=delimiter
+            delimiter=delimiter,
+            dtype={"id":str}
         )
         
     #rename text column if different from text
@@ -146,6 +148,7 @@ def main(args):
         truth_sim = util.cos_sim(text_embeddings, truth_embeddings)
         df[f'avg_truth_score_{i}'] = truth_sim.cpu().numpy()
 
+    df = df.copy()
     belief_keywords = pd.read_csv(args.belief_lexicon) 
     if args.verbalize_label:
         belief_keywords = ["The text expresses "+ l for l in belief_keywords] 
