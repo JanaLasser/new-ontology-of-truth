@@ -22,14 +22,14 @@ Therefore, the following scripts will only execute partly without aquiring the t
 * `tweet_collection/wrangle_data.ipynb` (requires NewsGuard data base and tweet texts)
 * `analysis/descriptive_dataset_statistics.ipynb` (requires Newsguard data base) 
 * `analysis/label_glove840B_DDR.sh` (requires tweet texts and New York Times abstracts)
-* `analysis/label_lexicon_loop.sh` (requires tweet texts)
+* `analysis/label_lexicon_loop.sh`, `analysis/label_lexicon_single_word.sh`, `analysis/label_fasttext-cc_DDR.sh` and `analysis/label_word2vec-googlenews_DDR.sh` (requires tweet texts)
 * `analysis/bertopic_model.ipynb` (requires tweet texts)
 * `analysis/scattertext.R` (requires tweet texts)
 
 Irrespective of these restrictions we publish all data sets necessary to reproduce all figures in our manuscript except for figure 1, since these data sets need not contain original texts nor the NewsGuard data base. 
 
 ### Restrictions on analysis reproducibility
-We cannot supply code to reproduce our computation of the LIWC labels for the "authentic", "analytic", "moral", "positive emotion" and "negative emotion" text components. This is due to the fact that LIWC is a proprietary software. Authors interested in reproducing our results should acquire access to [LIWC-22](https://www.liwc.app/) and apply it to the tweet texts. We do hoverwer supply the computed scors for the LIWC text components in the file `US_politician_tweets_2010-11-06_to_2022-03-16.csv.gzip`
+We cannot supply code to reproduce our computation of the LIWC labels for the "authentic", "analytic" and "moral" text components. This is due to the fact that LIWC22 is a proprietary software. Authors interested in reproducing our results should acquire access to [LIWC-22](https://www.liwc.app/) and apply it to the tweet texts. We do hoverwer supply the computed scores for the LIWC text components in the file `US_politician_tweets_2010-11-06_to_2022-12-31.csv.gzip`
 
 
 ### Organisation of the repository
@@ -40,13 +40,14 @@ The repository is organized into the two top-level folders `code` and `plots`. T
     * calculating descriptive dataset statistics `descriptive_dataset_statistics.ipynb` 
     * calculating honesty component similarity with various embeddings: `label_glove840B_DDR.sh`, `label_fasttext-cc_DDR.sh`, `label_word2vec-googlenews_DDR.sh` and `compute_sbert_avg_lexicon.py`
     * calculating keyword similarity: `label_lexicon_single_word.sh` and `compute_sbert_avg_lexicon_reduce_lexicon_single_word.py`
-    * validating honsty components with human ratings: `validation.R` `document_level_validation.ipynb` (drawing the sample) and `document_level_validation.R` (analysis)
+    * calculating VADER sentiment scores: `compute_VADER_scores.ipynb`
+    * validating honesty components with human ratings: `validation.R` `create_document_level_validation_sample.ipynb` (drawing the sample) and `document_level_validation.R` (analysis)
     * bootstrapping: `bootstrapping.ipynb`
-    * statistical modelling: `lmer_models_tweets.Rmd`, `OLS_regression_articles.ipynb` and `mediation.R`
-    * assessing dictionary robustness `label_lexicon_loop.sh`, `compute_sbert_avg_lexicon_reduce_lexcion_loop.sh` and `compute_sbert_avg_lexicon_reduce_lexicon_loop.py`
+    * statistical modelling: `lmer_models_tweets.Rmd`, `OLS_regression_articles.ipynb` and `mediation.Rmd`
+    * assessing dictionary robustness `label_lexicon_loop.sh` and `compute_sbert_avg_lexicon_reduce_lexcion_loop.sh`
     * topic modelling with BERTtopic: `bertopic_model.ipynb`
     * reproducing all plots from the article: `plots.ipynb` and `scattertext.R`
-    * scrubbing all protected information from the data sets for public upload: `scrub_data_for_upload.ipynb`
+    * scrubbing all protected information from the data sets for upload to [OSF](https://osf.io/vny8k/): `scrub_data_for_upload.ipynb`
 
 ## Tweet collection
 ### Collecting user accounts
@@ -87,10 +88,12 @@ The script `tweet_collection/wrangle_data.ipynb` includes a commented out sectio
 This file then needs to be run through `scrub_data_for_upload.ipynb`. The resulting `tweets/tweets.csv` file can be loaded in `dictionary_robustness.ipynb` to fit the linear mixed effects model for every one of the 100 perturbed versions of each honesty components. The output of this script is the estimates for the fixed effects of the LME for each of the 100 dictionary versions, which is saved in `tweets/LME_results_dictionary_robustness.csv` and loaded in `analysis/plots.ipynb` to generate extended data figure 2.
  
 
-### LIWC scores
-We processed the full text of each tweet with LIWC-22, the latest version of the Linguistic Inquiry and Word Count Software [LIWC-22](https://www.liwc.app/). We exported the text of each tweet to a csv file with one row per tweet and two columns, one with the tweet id as a string and the second with the string containing the tweet text. We imported this file to LIWC-22 and processed only the column with the tweet text using the LIWC-22 English dictionary for the "authentic", "analytic", "moral", "positive emotion" and "negative emotion" text components. The result was exported as a csv file including additional columns for each LIWC metric for each tweet. We used this csv file in later statistical analyses.
-
+### LIWC and VADER scores
+We processed the full text of each tweet with LIWC-22, the latest version of the Linguistic Inquiry and Word Count Software [LIWC-22](https://www.liwc.app/). We exported the text of each tweet to a csv file with one row per tweet and two columns, one with the tweet id as a string and the second with the string containing the tweet text. We imported this file to LIWC-22 and processed only the column with the tweet text using the LIWC-22 English dictionary for the "authentic", "analytic" and "moral" text components. The result was exported as a csv file including additional columns for each LIWC metric for each tweet. 
 Scores are stored in the file `tweets/combined_US_politician_twitter_timelines_2010-11-06_to_2022-12-31_clean_mask_LIWC.csv.gzip` for later ingestion by `wrangle_data.ipynb`.
+
+VADER scores are calculated with the Python library `vaderSentiment` in the script `compute_VADER_scores.ipynb` and stored in the file `tweets/combined_US_politician_twitter_timelines_2010-11-06_to_2022-12-31_clean_VADER.csv.gzip` for later ingestion by `wrangle_data.ipynb`.
+
 
 ### Data wrangling
 The script `wrangle_data.ipynb` takes input from all previous data collection and analysis steps to create three output data files that aggregate most information for different downstream analysis tasks:
@@ -101,9 +104,9 @@ The script `wrangle_data.ipynb` takes input from all previous data collection an
     * `party`: party affiliation of the account that posted the tweet.
     * `created_at`: tweet creation time in UTZ time.
     * `retweeted`, `quoted` and `reply`: whether the tweet is a retweet, quote-tweet or reply. Note that these categories are not exclusive.
-    * `avg_belief_score` and `avg_truth_score`: float, similarity to the belief-speaking and truth-seeking dictionaries. If the robustness analysis is included (see section "Dictionary robustness" above), there are columns with similarity scores calculated using perturbed dictionaries `avg_belief_score_i` and `avg_truth_score_i`, where i ranges from 0 to 99. In addition `avg_belief_score_word2vec`, `avg_truth_score_word2vec`, `avg_belief_score_fasttext` and `avg_truth_score_fasttext` contain the similarity ratings calculated with the word2vec and fasttext embeddings instead of GLoVe.
+    * `avg_belief_score` and `avg_truth_score`: float, length-corrected and centered similarity to the belief-speaking and truth-seeking dictionaries. If the robustness analysis is included (see section "Dictionary robustness" above), there are columns with similarity scores calculated using perturbed dictionaries `avg_belief_score_i` and `avg_truth_score_i`, where i ranges from 0 to 99. In addition `avg_belief_score_word2vec`, `avg_truth_score_word2vec`, `avg_belief_score_fasttext` and `avg_truth_score_fasttext` contain the similarity ratings calculated with the word2vec and fasttext embeddings instead of GLoVe.
     * `has_url`: bool, whether the tweet contained an URL. 
-    * `LIWC_analytic`, `LIWC_authentic`, `LIWC_moral`, `LIWC_emo_pos`, and `LIWC_emo_neg`: LIWC scores for the text components "analytic", "authentic", "moral", "positive emotions" and "negative emotions" determined using the [LIWC-22](https://www.liwc.app/) software.
+    * `LIWC_analytic`, `LIWC_authentic`, `LIWC_moral`, `VADER_pos`, and `VADER_neg`: LIWC scores for the text components "analytic", "authentic", "moral" and VADER scores for positive and negative sentiment. Scores are calculated using the [LIWC-22](https://www.liwc.app/) software and the [vaderSentiment](https://github.com/cjhutto/vaderSentiment) library.
     * `NG_score`: float. Only exists for tweets that contained an URL. NewsGuard score determined by matching the domain contained in the URL against the [NewsGuard database](https://www.newsguardtech.com/de/) of information quality. If the tweet contained more than one URL with a NewsGuard score, the scores are averaged.
     * `transparency` and `accuracy`: float. Only exists for tweets that contained an URL. Accuracy and transparency score determined by matching the domain contained in the URL against the [Independent information quality database](https://github.com/JanaLasser/misinformation_domains). If the tweet contained more than one URL with an accuracy and transparency score, the scores are averaged.
     * `NG_unreliable` and `independent_unreliable`: bool. Only exists for tweets that contained an URL. Whether the URL pointed to an "unreliable" website, i.e. a website with a NewsGuard score < 60 or an accuracy score < 1.5 or a transparency score of < 2.5.
@@ -133,7 +136,7 @@ The script `wrangle_data.ipynb` takes input from all previous data collection an
     * `NG_score`, `accuracy` and `transparency`: NewsGuard, accuracy and transparency score of the domain the URL pointed to, determined with the [NewsGuard](https://www.newsguardtech.com/de/) and [Independent](https://github.com/JanaLasser/misinformation_domains) of information quality.
     * `NG_unreliable` and `independent_unreliable`: Whether the URL pointed to an "unreliable" website, i.e. a website with a NewsGuard score < 60 or an accuracy score < 1.5 or a transparency score of < 2.5.
     
-When all data has been preprocessed, the files `US_politician_tweets_2010-11-06_to_2022-12-131.csv.gzip`, `US_politician_URLs_2010-11-06_to_2022-12-31.csv.gzip`, `article_corpus_clean_honesty_component_scores_glove.csv.gzip`, `url_NG_scores.csv.gzip`, `url_independent_scores.csv.gzip`, `NYT_abstracts_honesty_component_scores_glove.csv.gzip` and `NYT_abstracts.csv.gzip` are ingested by the script `scrub_data_for_upload.ipynb` to scrub the data from all columns that contain protected information (tweet texts and New York Time article abstracts) or would allow for a link between domains and NewsGuard scores. The script produces four clean files that are (together with `users/users.csv`, `tweets_for_lme_modelling_NG.csv.gzip` and `tweets_for_lme_modelling_independent.csv.gzip` from `wrangle_data.ipynb`) provided in the OSF repository:
+When all data has been preprocessed, the files `US_politician_tweets_2010-11-06_to_2022-12-31.csv.gzip`, `US_politician_URLs_2010-11-06_to_2022-12-31.csv.gzip`, `article_corpus_clean_honesty_component_scores_glove.csv.gzip`, `url_NG_scores.csv.gzip`, `url_independent_scores.csv.gzip`, `NYT_abstracts_honesty_component_scores_glove.csv.gzip` and `NYT_abstracts.csv.gzip` are ingested by the script `scrub_data_for_upload.ipynb` to scrub the data from all columns that contain protected information (tweet texts and New York Time article abstracts) or would allow for a link between domains and NewsGuard scores. The script produces four clean files that are (together with `users/users.csv`, `tweets_for_lme_modelling_NG.csv.gzip` and `tweets_for_lme_modelling_independent.csv.gzip` from `wrangle_data.ipynb`) provided in the OSF repository:
 * `tweets/tweets.csv.gzip`
 * `urls/urls.csv.gzip`
 * `NYT/abstracts.csv.gzip`
@@ -204,6 +207,7 @@ All visualisations in the main manuscript, extended data and figures and supplem
 * `validation/document_validation_data.csv` (output from Qualtrics, provided in repository)
 
 ### Supplementary Figure 7
+Note that this figure is an analysis of VADER scores, which are also included in the bootstrapping analysis saved in the `LIWC` files.
 * `bootstrapping/LIWC.csv.gzip` (created by `analysis/bootstrapping.ipynb`, provided in repository)
 * `bootstrapping/LIWC_belief.csv.gzip` (created by `analysis/bootstrapping.ipynb`, provided in repository)
 * `bootstrapping/LIWC_truth.csv.gzip` (created by `analysis/bootstrapping.ipynb`, provided in repository)
@@ -227,8 +231,4 @@ All visualisations in the main manuscript, extended data and figures and supplem
 * `utilities/popular_vote_2020.csv` (provided in `utilities`)
 
 ### Supplementary Figure 11
-* `users/users.csv` (created by `tweet_collection/wrangle_data.ipynb`, provided in repository)
-
-### Supplementary Figure 12
-* `tweets/combined_US_politician_twitter_timelines_2010-11-06_to_2022-12-31_honesty_component_scores_glove_singleword.csv.gzip` (created by `label_lexicon_single_word.sh`, not provided in the repository)
-* `US_politician_tweets_2010-11-06_to_2022-12-31.csv.gzip` (created by `wrangle_data.ipynb`, not provided in the repository)
+* `tweets/combined_US_politician_twitter_timelines_2010-11-06_to_2022-12-31_honesty_component_scores_glove_singleword.csv.gzip` (created by `analysis/label_lexicon_single_word.sh`, not provided in the repository)
