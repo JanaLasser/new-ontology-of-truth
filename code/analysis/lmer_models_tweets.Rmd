@@ -31,26 +31,26 @@ model_NG <- lmer(NG ~ 1 + belief * truth + belief * truth * party + (1 + belief 
 ```
 
 ```{r full model accuracy}
-model_acc <- lmer(accuracy ~ 1 + belief * truth + belief * truth * party + (1 + belief * truth|author_id), data=tweets_independent, control=lmerControl(optCtrl=list(maxfun=30000, optimizer="bobyqa") ))
+model_acc <- lmer(accuracy ~ 1 + belief * truth + belief * truth * party + (1 + belief * truth|author_id), data=tweets_independent, control=lmerControl(optCtrl=list(maxfun=30000, optimizer="bobyqa", algorithm="NLOPT_LN_NELDERMEAD") ))
 ```
 
 ```{r full model transparency}
-model_trans <- lmer(transparency ~ 1 + belief * truth + belief * truth * party + (1 + belief * truth|author_id), data=tweets_independent, control=lmerControl(optCtrl=list(maxfun=30000, algorithm="NLOPT_LN_NELDERMEAD") ))
+model_trans <- lmer(transparency ~ 1 + belief * truth + belief * truth * party + (1 + belief * truth|author_id), data=tweets_independent, control=lmerControl(optCtrl=list(maxfun=30000, optimizer="bobyqa", algorithm="NLOPT_LN_NELDERMEAD") ))
 ```
 
 ```{r full model word2vec}
-model_word2vec <- lmer(NG ~ 1 + belief_word2vec * truth_word2vec + belief_word2vec * truth_word2vec * party + (1 + belief_word2vec * truth_word2vec|author_id), data=tweets_emb, control=lmerControl(optCtrl=list(maxfun=30000),optimizer="bobyqa" ))
+model_word2vec <- lmer(NG ~ 1 + belief_word2vec * truth_word2vec + belief_word2vec * truth_word2vec * party + (1 + belief_word2vec * truth_word2vec|author_id), data=tweets_emb, control=lmerControl(optCtrl=list(maxfun=30000, optimizer="bobyqa", algorithm="NLOPT_LN_NELDERMEAD") ))
 ```
 
 ```{r full model fasttext}
-model_fasttext <- lmer(NG ~ 1 + belief_fasttext * truth_fasttext + belief_fasttext * truth_fasttext * party + (1 + belief_fasttext * truth_fasttext|author_id), data=tweets_emb, control=lmerControl(optCtrl=list(maxfun=30000),optimizer="bobyqa" ))
+model_fasttext <- lmer(NG ~ 1 + belief_fasttext * truth_fasttext + belief_fasttext * truth_fasttext * party + (1 + belief_fasttext * truth_fasttext|author_id), data=tweets_emb, control=lmerControl(optCtrl=list(maxfun=30000, optimizer="bobyqa", algorithm="NLOPT_LN_NELDERMEAD") ))
 ```
 
 ```{r statistics NG model}
 summary(model_NG)
 ```
 ```{r statistics NG model}
- tab_model(model_NG, show.aic=TRUE, show.loglik=TRUE, digits=4)
+tab_model(model_NG, show.aic=TRUE, show.loglik=TRUE, digits=4)
 ```
 ```{r statistics NG model}
 BIC(model_NG)
