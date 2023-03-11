@@ -1,5 +1,5 @@
 source_path="./"
-model_name_or_path="../../data/utilities/sentence-transformers/average_word_embeddings_glove.840B.300d"
+model_name_or_path="../../data/utilities/sentence-transformers/glove-model-reduced-stopwords"
 python ${source_path}/compute_sbert_avg_lexicon_reduce_lexcion_single_word.py --model_name_or_path ${model_name_or_path}\
 	--input_file "../../data/tweets/combined_US_politician_twitter_timelines_2010-11-06_to_2022-12-31_clean.csv.gzip"\
 	--output_file "../../data/tweets/combined_US_politician_twitter_timelines_2010-11-06_to_2022-12-31_honesty_component_scores_glove_singleword.csv.gzip"\
