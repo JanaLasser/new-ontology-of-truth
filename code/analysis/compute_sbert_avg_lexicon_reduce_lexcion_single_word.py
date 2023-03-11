@@ -71,29 +71,10 @@ def compute_similarity(text_embeddings, label_embeddings):
     cos_sim = util.cos_sim(text_embeddings, label_embeddings)
     return cos_sim
 
-#leave-one-out
-def leave_one_keyword_out(keywords):
-    sample_keywords = []
-    for elem in keywords:
-        tmp = keywords.copy()
-        tmp.remove(elem)
-        sample_keywords.append(tmp)
-    return sample_keywords
-
 def single_keyword(keywords):
     sample_keywords = []
     for elem in keywords:
         sample_keywords.append([elem])
-    return sample_keywords
-
-def reduce_keywords_by_frac(keywords, frac=0.2):
-    import random
-    sample_keywords = []
-    n = (1-frac) * len(keywords)
-    n = round(n)
-    for i in range(args.N_bootstrap):
-        sample_keyword = random.sample(keywords, n)
-        sample_keywords.append(sample_keyword)
     return sample_keywords
 
 def main(args):
