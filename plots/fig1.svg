@@ -46,84 +46,157 @@
 <polyline points='347.49,328.29 347.49,5.48 ' style='stroke-width: 1.07; stroke: #EBEBEB; stroke-linecap: butt;' />
 <polyline points='487.96,328.29 487.96,5.48 ' style='stroke-width: 1.07; stroke: #EBEBEB; stroke-linecap: butt;' />
 <polyline points='628.42,328.29 628.42,5.48 ' style='stroke-width: 1.07; stroke: #EBEBEB; stroke-linecap: butt;' />
-<line x1='514.73' y1='228.28' x2='535.95' y2='231.48' style='stroke-width: 1.07; stroke: #6147B8;' />
-<line x1='573.25' y1='18.92' x2='581.76' y2='26.80' style='stroke-width: 1.07; stroke: #442FBA;' />
-<line x1='618.48' y1='237.26' x2='615.35' y2='250.04' style='stroke-width: 1.07; stroke: #211DBB;' />
-<line x1='254.89' y1='19.04' x2='246.48' y2='24.71' style='stroke-width: 1.07; stroke: #D68470;' />
-<line x1='541.77' y1='221.15' x2='547.19' y2='228.66' style='stroke-width: 1.07; stroke: #5B42B8;' />
-<line x1='161.85' y1='19.48' x2='154.06' y2='27.55' style='stroke-width: 1.07; stroke: #EF5B3D;' />
-<line x1='120.31' y1='18.92' x2='113.66' y2='29.47' style='stroke-width: 1.07; stroke: #F74125;' />
-<line x1='574.50' y1='41.13' x2='595.12' y2='37.22' style='stroke-width: 1.07; stroke: #3728BB;' />
-<line x1='151.69' y1='232.08' x2='149.51' y2='239.86' style='stroke-width: 1.07; stroke: #F0583A;' />
-<line x1='59.85' y1='200.38' x2='67.44' y2='210.88' style='stroke-width: 1.07; stroke: #FF0000;' />
-<line x1='586.12' y1='218.10' x2='581.81' y2='231.08' style='stroke-width: 1.07; stroke: #4430BA;' />
-<line x1='575.56' y1='206.59' x2='555.50' y2='221.88' style='stroke-width: 1.07; stroke: #573EB9;' />
-<line x1='170.09' y1='184.33' x2='164.99' y2='199.47' style='stroke-width: 1.07; stroke: #EC6143;' />
-<line x1='95.45' y1='191.39' x2='83.71' y2='203.08' style='stroke-width: 1.07; stroke: #FD230F;' />
-<line x1='114.54' y1='211.76' x2='124.07' y2='223.56' style='stroke-width: 1.07; stroke: #F5492C;' />
-<line x1='93.92' y1='46.07' x2='77.04' y2='58.56' style='stroke-width: 1.07; stroke: #FE1808;' />
-<line x1='126.38' y1='221.29' x2='136.84' y2='228.94' style='stroke-width: 1.07; stroke: #F25234;' />
-<line x1='127.14' y1='171.81' x2='134.16' y2='194.45' style='stroke-width: 1.07; stroke: #F35032;' />
-<text x='618.86' y='47.75' text-anchor='middle' style='font-size: 11.04px;fill: #2E23BB; font-family: "Liberation Sans";' textLength='33.60px' lengthAdjust='spacingAndGlyphs'>trump</text>
-<text x='587.96' y='266.35' text-anchor='middle' style='font-size: 11.04px;fill: #4C36B9; font-family: "Liberation Sans";' textLength='23.90px' lengthAdjust='spacingAndGlyphs'>care</text>
-<text x='541.06' y='249.94' text-anchor='middle' style='font-size: 11.04px;fill: #5C43B8; font-family: "Liberation Sans";' textLength='25.25px' lengthAdjust='spacingAndGlyphs'>pass</text>
-<text x='499.84' y='232.16' text-anchor='middle' style='font-size: 11.04px;fill: #6147B8; font-family: "Liberation Sans";' textLength='26.19px' lengthAdjust='spacingAndGlyphs'>child</text>
-<text x='59.64' y='54.78' text-anchor='middle' style='font-size: 11.04px;fill: #FF0401; font-family: "Liberation Sans";' textLength='30.84px' lengthAdjust='spacingAndGlyphs'>biden</text>
-<text x='589.85' y='250.67' text-anchor='middle' style='font-size: 11.04px;fill: #4B35BA; font-family: "Liberation Sans";' textLength='37.62px' lengthAdjust='spacingAndGlyphs'>worker</text>
-<text x='568.97' y='234.65' text-anchor='middle' style='font-size: 11.04px;fill: #533BB9; font-family: "Liberation Sans";' textLength='36.75px' lengthAdjust='spacingAndGlyphs'>million</text>
-<text x='628.43' y='63.02' text-anchor='middle' style='font-size: 11.04px;fill: #2920BB; font-family: "Liberation Sans";' textLength='20.98px' lengthAdjust='spacingAndGlyphs'>gun</text>
-<text x='73.57' y='28.73' text-anchor='middle' style='font-size: 11.04px;fill: #FD1D0B; font-family: "Liberation Sans";' textLength='58.71px' lengthAdjust='spacingAndGlyphs'>democrats</text>
-<text x='571.14' y='17.12' text-anchor='middle' style='font-size: 11.04px;fill: #442FBA; font-family: "Liberation Sans";' textLength='63.76px' lengthAdjust='spacingAndGlyphs'>republicans</text>
-<text x='618.51' y='235.46' text-anchor='middle' style='font-size: 11.04px;fill: #211DBB; font-family: "Liberation Sans";' textLength='40.82px' lengthAdjust='spacingAndGlyphs'>climate</text>
-<text x='591.95' y='65.84' text-anchor='middle' style='font-size: 11.04px;fill: #3426BB; font-family: "Liberation Sans";' textLength='46.04px' lengthAdjust='spacingAndGlyphs'>violence</text>
-<text x='598.96' y='81.55' text-anchor='middle' style='font-size: 11.04px;fill: #4833BA; font-family: "Liberation Sans";' textLength='36.05px' lengthAdjust='spacingAndGlyphs'>justice</text>
-<text x='260.97' y='17.24' text-anchor='middle' style='font-size: 11.04px;fill: #D68470; font-family: "Liberation Sans";' textLength='27.53px' lengthAdjust='spacingAndGlyphs'>hope</text>
-<text x='62.42' y='103.69' text-anchor='middle' style='font-size: 11.04px;fill: #FF0B03; font-family: "Liberation Sans";' textLength='36.41px' lengthAdjust='spacingAndGlyphs'>border</text>
-<text x='166.89' y='247.28' text-anchor='middle' style='font-size: 11.04px;fill: #EF5A3C; font-family: "Liberation Sans";' textLength='24.84px' lengthAdjust='spacingAndGlyphs'>read</text>
-<text x='498.52' y='17.12' text-anchor='middle' style='font-size: 11.04px;fill: #6E55B6; font-family: "Liberation Sans";' textLength='23.13px' lengthAdjust='spacingAndGlyphs'>love</text>
-<text x='608.31' y='30.30' text-anchor='middle' style='font-size: 11.04px;fill: #2C22BB; font-family: "Liberation Sans";' textLength='61.23px' lengthAdjust='spacingAndGlyphs'>democracy</text>
-<text x='176.36' y='281.19' text-anchor='middle' style='font-size: 11.04px;fill: #ED6042; font-family: "Liberation Sans";' textLength='16.24px' lengthAdjust='spacingAndGlyphs'>u.s</text>
-<text x='143.54' y='270.32' text-anchor='middle' style='font-size: 11.04px;fill: #ED5F41; font-family: "Liberation Sans";' textLength='29.38px' lengthAdjust='spacingAndGlyphs'>small</text>
-<text x='86.72' y='293.55' text-anchor='middle' style='font-size: 11.04px;fill: #F9381E; font-family: "Liberation Sans";' textLength='38.44px' lengthAdjust='spacingAndGlyphs'>energy</text>
-<text x='541.26' y='219.35' text-anchor='middle' style='font-size: 11.04px;fill: #5B42B8; font-family: "Liberation Sans";' textLength='27.12px' lengthAdjust='spacingAndGlyphs'>build</text>
-<text x='111.00' y='259.81' text-anchor='middle' style='font-size: 11.04px;fill: #F25133; font-family: "Liberation Sans";' textLength='42.10px' lengthAdjust='spacingAndGlyphs'>military</text>
-<text x='163.28' y='17.68' text-anchor='middle' style='font-size: 11.04px;fill: #EF5B3D; font-family: "Liberation Sans";' textLength='24.49px' lengthAdjust='spacingAndGlyphs'>man</text>
-<text x='193.22' y='32.16' text-anchor='middle' style='font-size: 11.04px;fill: #E76B4F; font-family: "Liberation Sans";' textLength='20.76px' lengthAdjust='spacingAndGlyphs'>bad</text>
-<text x='120.75' y='17.12' text-anchor='middle' style='font-size: 11.04px;fill: #F74125; font-family: "Liberation Sans";' textLength='46.24px' lengthAdjust='spacingAndGlyphs'>freedom</text>
-<text x='562.33' y='45.43' text-anchor='middle' style='font-size: 11.04px;fill: #3728BB; font-family: "Liberation Sans";' textLength='20.74px' lengthAdjust='spacingAndGlyphs'>gop</text>
-<text x='531.80' y='30.16' text-anchor='middle' style='font-size: 11.04px;fill: #563DB9; font-family: "Liberation Sans";' textLength='29.20px' lengthAdjust='spacingAndGlyphs'>voice</text>
-<text x='137.20' y='59.49' text-anchor='middle' style='font-size: 11.04px;fill: #F0593B; font-family: "Liberation Sans";' textLength='33.52px' lengthAdjust='spacingAndGlyphs'>spend</text>
-<text x='225.54' y='32.06' text-anchor='middle' style='font-size: 11.04px;fill: #E1755B; font-family: "Liberation Sans";' textLength='29.15px' lengthAdjust='spacingAndGlyphs'>party</text>
-<text x='151.72' y='230.28' text-anchor='middle' style='font-size: 11.04px;fill: #F0583A; font-family: "Liberation Sans";' textLength='31.21px' lengthAdjust='spacingAndGlyphs'>result</text>
-<text x='59.16' y='198.58' text-anchor='middle' style='font-size: 11.04px;fill: #FF0000; font-family: "Liberation Sans";' textLength='29.87px' lengthAdjust='spacingAndGlyphs'>china</text>
-<text x='613.42' y='220.05' text-anchor='middle' style='font-size: 11.04px;fill: #4430BA; font-family: "Liberation Sans";' textLength='51.00px' lengthAdjust='spacingAndGlyphs'>condition</text>
-<text x='277.97' y='37.44' text-anchor='middle' style='font-size: 11.04px;fill: #CC8F7F; font-family: "Liberation Sans";' textLength='22.64px' lengthAdjust='spacingAndGlyphs'>true</text>
-<text x='579.14' y='204.79' text-anchor='middle' style='font-size: 11.04px;fill: #573EB9; font-family: "Liberation Sans";' textLength='31.12px' lengthAdjust='spacingAndGlyphs'>count</text>
-<text x='68.84' y='249.72' text-anchor='middle' style='font-size: 11.04px;fill: #FA361C; font-family: "Liberation Sans";' textLength='49.23px' lengthAdjust='spacingAndGlyphs'>taxpayer</text>
-<text x='533.27' y='101.90' text-anchor='middle' style='font-size: 11.04px;fill: #5E45B8; font-family: "Liberation Sans";' textLength='29.57px' lengthAdjust='spacingAndGlyphs'>wage</text>
-<text x='141.21' y='40.64' text-anchor='middle' style='font-size: 11.04px;fill: #ED6043; font-family: "Liberation Sans";' textLength='45.97px' lengthAdjust='spacingAndGlyphs'>sacrifice</text>
-<text x='544.46' y='194.75' text-anchor='middle' style='font-size: 11.04px;fill: #583FB8; font-family: "Liberation Sans";' textLength='18.08px' lengthAdjust='spacingAndGlyphs'>pre</text>
-<text x='170.18' y='182.53' text-anchor='middle' style='font-size: 11.04px;fill: #EC6143; font-family: "Liberation Sans";' textLength='29.41px' lengthAdjust='spacingAndGlyphs'>trade</text>
-<text x='142.24' y='207.69' text-anchor='middle' style='font-size: 11.04px;fill: #F05739; font-family: "Liberation Sans";' textLength='34.96px' lengthAdjust='spacingAndGlyphs'>officer</text>
-<text x='97.77' y='189.59' text-anchor='middle' style='font-size: 11.04px;fill: #FD230F; font-family: "Liberation Sans";' textLength='32.82px' lengthAdjust='spacingAndGlyphs'>illegal</text>
-<text x='99.18' y='109.25' text-anchor='middle' style='font-size: 11.04px;fill: #F9391F; font-family: "Liberation Sans";' textLength='21.36px' lengthAdjust='spacingAndGlyphs'>iran</text>
-<text x='94.22' y='213.81' text-anchor='middle' style='font-size: 11.04px;fill: #F5492C; font-family: "Liberation Sans";' textLength='37.05px' lengthAdjust='spacingAndGlyphs'>farmer</text>
-<text x='573.10' y='189.25' text-anchor='middle' style='font-size: 11.04px;fill: #543CB9; font-family: "Liberation Sans";' textLength='19.58px' lengthAdjust='spacingAndGlyphs'>aca</text>
-<text x='101.95' y='44.27' text-anchor='middle' style='font-size: 11.04px;fill: #FE1808; font-family: "Liberation Sans";' textLength='70.88px' lengthAdjust='spacingAndGlyphs'>conservative</text>
-<text x='114.82' y='223.16' text-anchor='middle' style='font-size: 11.04px;fill: #F25234; font-family: "Liberation Sans";' textLength='19.50px' lengthAdjust='spacingAndGlyphs'>gas</text>
-<text x='112.05' y='242.99' text-anchor='middle' style='font-size: 11.04px;fill: #F44B2E; font-family: "Liberation Sans";' textLength='38.38px' lengthAdjust='spacingAndGlyphs'>growth</text>
-<text x='563.06' y='117.17' text-anchor='middle' style='font-size: 11.04px;fill: #5D43B8; font-family: "Liberation Sans";' textLength='27.16px' lengthAdjust='spacingAndGlyphs'>color</text>
-<text x='572.51' y='140.97' text-anchor='middle' style='font-size: 11.04px;fill: #6047B8; font-family: "Liberation Sans";' textLength='78.17px' lengthAdjust='spacingAndGlyphs'>discrimination</text>
-<text x='68.90' y='234.43' text-anchor='middle' style='font-size: 11.04px;fill: #FC2913; font-family: "Liberation Sans";' textLength='49.37px' lengthAdjust='spacingAndGlyphs'>mandate</text>
-<text x='512.67' y='210.03' text-anchor='middle' style='font-size: 11.04px;fill: #5A41B8; font-family: "Liberation Sans";' textLength='69.88px' lengthAdjust='spacingAndGlyphs'>reproductive</text>
-<text x='534.26' y='179.49' text-anchor='middle' style='font-size: 11.04px;fill: #6148B8; font-family: "Liberation Sans";' textLength='43.32px' lengthAdjust='spacingAndGlyphs'>existing</text>
-<text x='127.48' y='285.60' text-anchor='middle' style='font-size: 11.04px;fill: #F25335; font-family: "Liberation Sans";' textLength='13.35px' lengthAdjust='spacingAndGlyphs'>irs</text>
-<text x='82.61' y='275.04' text-anchor='middle' style='font-size: 11.04px;fill: #F64428; font-family: "Liberation Sans";' textLength='56.03px' lengthAdjust='spacingAndGlyphs'>regulation</text>
-<text x='130.26' y='151.21' text-anchor='middle' style='font-size: 11.04px;fill: #F74226; font-family: "Liberation Sans";' textLength='48.92px' lengthAdjust='spacingAndGlyphs'>southern</text>
-<text x='77.32' y='127.07' text-anchor='middle' style='font-size: 11.04px;fill: #F9391F; font-family: "Liberation Sans";' textLength='61.91px' lengthAdjust='spacingAndGlyphs'>obamacare</text>
-<text x='167.94' y='88.80' text-anchor='middle' style='font-size: 11.04px;fill: #EF5A3C; font-family: "Liberation Sans";' textLength='35.32px' lengthAdjust='spacingAndGlyphs'>liberty</text>
-<text x='127.04' y='170.01' text-anchor='middle' style='font-size: 11.04px;fill: #F35032; font-family: "Liberation Sans";' textLength='42.44px' lengthAdjust='spacingAndGlyphs'>chinese</text>
-<text x='145.92' y='133.80' text-anchor='middle' style='font-size: 11.04px;fill: #F05739; font-family: "Liberation Sans";' textLength='61.42px' lengthAdjust='spacingAndGlyphs'>communist</text>
+<line x1='591.49' y1='109.44' x2='564.90' y2='99.33' style='stroke-width: 1.07; stroke: #5139B9;' />
+<line x1='514.92' y1='228.31' x2='535.95' y2='231.48' style='stroke-width: 1.07; stroke: #6147B8;' />
+<line x1='564.44' y1='108.12' x2='552.73' y2='99.02' style='stroke-width: 1.07; stroke: #583FB8;' />
+<line x1='129.53' y1='273.52' x2='141.33' y2='274.61' style='stroke-width: 1.07; stroke: #F15537;' />
+<line x1='573.24' y1='18.92' x2='581.76' y2='26.80' style='stroke-width: 1.07; stroke: #442FBA;' />
+<line x1='618.48' y1='236.11' x2='615.34' y2='250.04' style='stroke-width: 1.07; stroke: #211DBB;' />
+<line x1='397.35' y1='13.82' x2='445.94' y2='25.72' style='stroke-width: 1.07; stroke: #8875B2;' />
+<line x1='601.07' y1='91.78' x2='576.78' y2='70.40' style='stroke-width: 1.07; stroke: #4833BA;' />
+<line x1='608.30' y1='18.92' x2='607.07' y2='33.96' style='stroke-width: 1.07; stroke: #2C22BB;' />
+<line x1='462.66' y1='26.66' x2='452.91' y2='25.94' style='stroke-width: 1.07; stroke: #8773B2;' />
+<line x1='540.87' y1='220.59' x2='547.16' y2='228.67' style='stroke-width: 1.07; stroke: #5B42B8;' />
+<line x1='189.32' y1='26.36' x2='186.80' y2='35.82' style='stroke-width: 1.07; stroke: #E76B4F;' />
+<line x1='117.36' y1='18.92' x2='113.48' y2='29.44' style='stroke-width: 1.07; stroke: #F74125;' />
+<line x1='543.22' y1='18.92' x2='555.47' y2='28.68' style='stroke-width: 1.07; stroke: #563DB9;' />
+<line x1='438.33' y1='18.92' x2='447.53' y2='25.03' style='stroke-width: 1.07; stroke: #8874B2;' />
+<line x1='107.53' y1='307.97' x2='119.83' y2='299.34' style='stroke-width: 1.07; stroke: #F6472A;' />
+<line x1='218.89' y1='26.81' x2='209.06' y2='35.70' style='stroke-width: 1.07; stroke: #E1755B;' />
+<line x1='536.16' y1='82.67' x2='544.79' y2='86.32' style='stroke-width: 1.07; stroke: #5C43B8;' />
+<line x1='60.20' y1='202.79' x2='67.35' y2='210.90' style='stroke-width: 1.07; stroke: #FF0000;' />
+<line x1='586.12' y1='216.87' x2='581.79' y2='231.08' style='stroke-width: 1.07; stroke: #4430BA;' />
+<line x1='565.88' y1='92.82' x2='557.28' y2='88.76' style='stroke-width: 1.07; stroke: #563DB9;' />
+<line x1='575.21' y1='206.84' x2='555.50' y2='221.88' style='stroke-width: 1.07; stroke: #573EB9;' />
+<line x1='523.86' y1='87.25' x2='531.55' y2='87.98' style='stroke-width: 1.07; stroke: #6349B7;' />
+<line x1='134.97' y1='192.20' x2='160.83' y2='217.20' style='stroke-width: 1.07; stroke: #ED5F41;' />
+<line x1='550.14' y1='190.82' x2='552.37' y2='198.06' style='stroke-width: 1.07; stroke: #583FB8;' />
+<line x1='576.40' y1='63.04' x2='562.05' y2='70.70' style='stroke-width: 1.07; stroke: #533BB9;' />
+<line x1='69.25' y1='182.04' x2='82.53' y2='203.03' style='stroke-width: 1.07; stroke: #FD230F;' />
+<line x1='91.35' y1='110.79' x2='108.42' y2='95.16' style='stroke-width: 1.07; stroke: #F83E22;' />
+<line x1='104.34' y1='213.52' x2='123.61' y2='223.73' style='stroke-width: 1.07; stroke: #F5492C;' />
+<line x1='89.15' y1='45.69' x2='76.85' y2='58.49' style='stroke-width: 1.07; stroke: #FE1808;' />
+<line x1='98.07' y1='61.03' x2='92.10' y2='68.37' style='stroke-width: 1.07; stroke: #FB2E16;' />
+<line x1='117.03' y1='227.40' x2='136.26' y2='229.43' style='stroke-width: 1.07; stroke: #F25234;' />
+<line x1='546.85' y1='142.55' x2='538.51' y2='129.36' style='stroke-width: 1.07; stroke: #6047B8;' />
+<line x1='524.11' y1='175.47' x2='535.03' y2='185.30' style='stroke-width: 1.07; stroke: #6148B8;' />
+<line x1='158.26' y1='74.82' x2='145.73' y2='75.25' style='stroke-width: 1.07; stroke: #F15537;' />
+<line x1='102.05' y1='258.70' x2='116.37' y2='262.64' style='stroke-width: 1.07; stroke: #F64428;' />
+<line x1='112.17' y1='159.08' x2='114.35' y2='139.53' style='stroke-width: 1.07; stroke: #F74226;' />
+<line x1='380.23' y1='273.00' x2='392.64' y2='271.52' style='stroke-width: 1.07; stroke: #9B91AE;' />
+<line x1='129.10' y1='181.85' x2='134.09' y2='194.45' style='stroke-width: 1.07; stroke: #F35032;' />
+<line x1='171.73' y1='133.95' x2='160.01' y2='121.41' style='stroke-width: 1.07; stroke: #EE5E40;' />
+<line x1='141.61' y1='149.25' x2='147.01' y2='139.06' style='stroke-width: 1.07; stroke: #F05739;' />
+<text x='601.75' y='303.40' text-anchor='middle' style='font-size: 11.04px;fill: #4631BA; font-family: "Liberation Sans";' textLength='34.93px' lengthAdjust='spacingAndGlyphs'>health</text>
+<text x='534.56' y='102.81' text-anchor='middle' style='font-size: 11.04px;fill: #644AB7; font-family: "Liberation Sans";' textLength='34.05px' lengthAdjust='spacingAndGlyphs'>family</text>
+<text x='622.12' y='47.18' text-anchor='middle' style='font-size: 11.04px;fill: #2E23BB; font-family: "Liberation Sans";' textLength='33.60px' lengthAdjust='spacingAndGlyphs'>trump</text>
+<text x='540.37' y='48.11' text-anchor='middle' style='font-size: 11.04px;fill: #553DB9; font-family: "Liberation Sans";' textLength='25.26px' lengthAdjust='spacingAndGlyphs'>fight</text>
+<text x='556.43' y='264.86' text-anchor='middle' style='font-size: 11.04px;fill: #4C36B9; font-family: "Liberation Sans";' textLength='23.90px' lengthAdjust='spacingAndGlyphs'>care</text>
+<text x='528.69' y='263.60' text-anchor='middle' style='font-size: 11.04px;fill: #6148B8; font-family: "Liberation Sans";' textLength='17.15px' lengthAdjust='spacingAndGlyphs'>act</text>
+<text x='542.34' y='249.20' text-anchor='middle' style='font-size: 11.04px;fill: #5C43B8; font-family: "Liberation Sans";' textLength='25.25px' lengthAdjust='spacingAndGlyphs'>pass</text>
+<text x='571.54' y='40.78' text-anchor='middle' style='font-size: 11.04px;fill: #4B35BA; font-family: "Liberation Sans";' textLength='40.26px' lengthAdjust='spacingAndGlyphs'>woman</text>
+<text x='613.59' y='114.34' text-anchor='middle' style='font-size: 11.04px;fill: #5139B9; font-family: "Liberation Sans";' textLength='40.59px' lengthAdjust='spacingAndGlyphs'>change</text>
+<text x='500.03' y='232.19' text-anchor='middle' style='font-size: 11.04px;fill: #6147B8; font-family: "Liberation Sans";' textLength='26.19px' lengthAdjust='spacingAndGlyphs'>child</text>
+<text x='562.18' y='83.77' text-anchor='middle' style='font-size: 11.04px;fill: #5B42B8; font-family: "Liberation Sans";' textLength='20.29px' lengthAdjust='spacingAndGlyphs'>pay</text>
+<text x='175.92' y='119.88' text-anchor='middle' style='font-size: 11.04px;fill: #EE5E40; font-family: "Liberation Sans";' textLength='32.47px' lengthAdjust='spacingAndGlyphs'>policy</text>
+<text x='574.76' y='321.22' text-anchor='middle' style='font-size: 11.04px;fill: #543CB9; font-family: "Liberation Sans";' textLength='37.17px' lengthAdjust='spacingAndGlyphs'>access</text>
+<text x='569.24' y='117.96' text-anchor='middle' style='font-size: 11.04px;fill: #583FB8; font-family: "Liberation Sans";' textLength='33.96px' lengthAdjust='spacingAndGlyphs'>action</text>
+<text x='59.64' y='56.32' text-anchor='middle' style='font-size: 11.04px;fill: #FF0401; font-family: "Liberation Sans";' textLength='30.84px' lengthAdjust='spacingAndGlyphs'>biden</text>
+<text x='103.69' y='277.52' text-anchor='middle' style='font-size: 11.04px;fill: #F15537; font-family: "Liberation Sans";' textLength='48.07px' lengthAdjust='spacingAndGlyphs'>business</text>
+<text x='589.29' y='249.40' text-anchor='middle' style='font-size: 11.04px;fill: #4B35BA; font-family: "Liberation Sans";' textLength='37.62px' lengthAdjust='spacingAndGlyphs'>worker</text>
+<text x='570.40' y='234.06' text-anchor='middle' style='font-size: 11.04px;fill: #533BB9; font-family: "Liberation Sans";' textLength='36.75px' lengthAdjust='spacingAndGlyphs'>million</text>
+<text x='626.97' y='64.87' text-anchor='middle' style='font-size: 11.04px;fill: #2920BB; font-family: "Liberation Sans";' textLength='20.98px' lengthAdjust='spacingAndGlyphs'>gun</text>
+<text x='73.57' y='28.50' text-anchor='middle' style='font-size: 11.04px;fill: #FD1D0B; font-family: "Liberation Sans";' textLength='58.71px' lengthAdjust='spacingAndGlyphs'>democrats</text>
+<text x='571.13' y='17.12' text-anchor='middle' style='font-size: 11.04px;fill: #442FBA; font-family: "Liberation Sans";' textLength='63.76px' lengthAdjust='spacingAndGlyphs'>republicans</text>
+<text x='618.50' y='234.31' text-anchor='middle' style='font-size: 11.04px;fill: #211DBB; font-family: "Liberation Sans";' textLength='40.82px' lengthAdjust='spacingAndGlyphs'>climate</text>
+<text x='381.37' y='17.46' text-anchor='middle' style='font-size: 11.04px;fill: #8875B2; font-family: "Liberation Sans";' textLength='28.38px' lengthAdjust='spacingAndGlyphs'>thing</text>
+<text x='588.08' y='49.64' text-anchor='middle' style='font-size: 11.04px;fill: #3426BB; font-family: "Liberation Sans";' textLength='46.04px' lengthAdjust='spacingAndGlyphs'>violence</text>
+<text x='620.90' y='96.86' text-anchor='middle' style='font-size: 11.04px;fill: #4833BA; font-family: "Liberation Sans";' textLength='36.05px' lengthAdjust='spacingAndGlyphs'>justice</text>
+<text x='260.76' y='20.96' text-anchor='middle' style='font-size: 11.04px;fill: #D68470; font-family: "Liberation Sans";' textLength='27.53px' lengthAdjust='spacingAndGlyphs'>hope</text>
+<text x='62.42' y='88.23' text-anchor='middle' style='font-size: 11.04px;fill: #FF0B03; font-family: "Liberation Sans";' textLength='36.41px' lengthAdjust='spacingAndGlyphs'>border</text>
+<text x='166.96' y='247.12' text-anchor='middle' style='font-size: 11.04px;fill: #EF5A3C; font-family: "Liberation Sans";' textLength='24.84px' lengthAdjust='spacingAndGlyphs'>read</text>
+<text x='505.76' y='17.12' text-anchor='middle' style='font-size: 11.04px;fill: #6E55B6; font-family: "Liberation Sans";' textLength='23.13px' lengthAdjust='spacingAndGlyphs'>love</text>
+<text x='608.31' y='17.12' text-anchor='middle' style='font-size: 11.04px;fill: #2C22BB; font-family: "Liberation Sans";' textLength='61.23px' lengthAdjust='spacingAndGlyphs'>democracy</text>
+<text x='176.53' y='281.34' text-anchor='middle' style='font-size: 11.04px;fill: #ED6042; font-family: "Liberation Sans";' textLength='16.24px' lengthAdjust='spacingAndGlyphs'>u.s</text>
+<text x='152.06' y='263.75' text-anchor='middle' style='font-size: 11.04px;fill: #ED5F41; font-family: "Liberation Sans";' textLength='29.38px' lengthAdjust='spacingAndGlyphs'>small</text>
+<text x='86.60' y='293.53' text-anchor='middle' style='font-size: 11.04px;fill: #F9381E; font-family: "Liberation Sans";' textLength='38.44px' lengthAdjust='spacingAndGlyphs'>energy</text>
+<text x='480.59' y='30.69' text-anchor='middle' style='font-size: 11.04px;fill: #8773B2; font-family: "Liberation Sans";' textLength='32.26px' lengthAdjust='spacingAndGlyphs'>friend</text>
+<text x='540.19' y='218.79' text-anchor='middle' style='font-size: 11.04px;fill: #5B42B8; font-family: "Liberation Sans";' textLength='27.12px' lengthAdjust='spacingAndGlyphs'>build</text>
+<text x='126.20' y='262.15' text-anchor='middle' style='font-size: 11.04px;fill: #F25133; font-family: "Liberation Sans";' textLength='42.10px' lengthAdjust='spacingAndGlyphs'>military</text>
+<text x='159.64' y='21.04' text-anchor='middle' style='font-size: 11.04px;fill: #EF5B3D; font-family: "Liberation Sans";' textLength='24.49px' lengthAdjust='spacingAndGlyphs'>man</text>
+<text x='189.35' y='24.56' text-anchor='middle' style='font-size: 11.04px;fill: #E76B4F; font-family: "Liberation Sans";' textLength='20.76px' lengthAdjust='spacingAndGlyphs'>bad</text>
+<text x='248.05' y='40.16' text-anchor='middle' style='font-size: 11.04px;fill: #DC7D65; font-family: "Liberation Sans";' textLength='31.63px' lengthAdjust='spacingAndGlyphs'>agree</text>
+<text x='117.44' y='17.12' text-anchor='middle' style='font-size: 11.04px;fill: #F74125; font-family: "Liberation Sans";' textLength='46.24px' lengthAdjust='spacingAndGlyphs'>freedom</text>
+<text x='597.98' y='31.49' text-anchor='middle' style='font-size: 11.04px;fill: #3728BB; font-family: "Liberation Sans";' textLength='20.74px' lengthAdjust='spacingAndGlyphs'>gop</text>
+<text x='539.11' y='17.12' text-anchor='middle' style='font-size: 11.04px;fill: #563DB9; font-family: "Liberation Sans";' textLength='29.20px' lengthAdjust='spacingAndGlyphs'>voice</text>
+<text x='431.26' y='17.12' text-anchor='middle' style='font-size: 11.04px;fill: #8874B2; font-family: "Liberation Sans";' textLength='57.68px' lengthAdjust='spacingAndGlyphs'>remember</text>
+<text x='603.88' y='267.99' text-anchor='middle' style='font-size: 11.04px;fill: #4530BA; font-family: "Liberation Sans";' textLength='56.35px' lengthAdjust='spacingAndGlyphs'>protection</text>
+<text x='167.83' y='56.52' text-anchor='middle' style='font-size: 11.04px;fill: #EE5E40; font-family: "Liberation Sans";' textLength='23.62px' lengthAdjust='spacingAndGlyphs'>deal</text>
+<text x='556.48' y='66.84' text-anchor='middle' style='font-size: 11.04px;fill: #5C43B8; font-family: "Liberation Sans";' textLength='28.93px' lengthAdjust='spacingAndGlyphs'>voter</text>
+<text x='125.14' y='43.97' text-anchor='middle' style='font-size: 11.04px;fill: #F0593B; font-family: "Liberation Sans";' textLength='33.52px' lengthAdjust='spacingAndGlyphs'>spend</text>
+<text x='100.25' y='317.81' text-anchor='middle' style='font-size: 11.04px;fill: #F6472A; font-family: "Liberation Sans";' textLength='70.40px' lengthAdjust='spacingAndGlyphs'>enforcement</text>
+<text x='221.45' y='25.01' text-anchor='middle' style='font-size: 11.04px;fill: #E1755B; font-family: "Liberation Sans";' textLength='29.15px' lengthAdjust='spacingAndGlyphs'>party</text>
+<text x='131.40' y='244.75' text-anchor='middle' style='font-size: 11.04px;fill: #F0583A; font-family: "Liberation Sans";' textLength='31.21px' lengthAdjust='spacingAndGlyphs'>result</text>
+<text x='530.89' y='80.87' text-anchor='middle' style='font-size: 11.04px;fill: #5C43B8; font-family: "Liberation Sans";' textLength='18.24px' lengthAdjust='spacingAndGlyphs'>fair</text>
+<text x='610.81' y='285.61' text-anchor='middle' style='font-size: 11.04px;fill: #3F2DBA; font-family: "Liberation Sans";' textLength='56.22px' lengthAdjust='spacingAndGlyphs'>affordable</text>
+<text x='204.32' y='50.56' text-anchor='middle' style='font-size: 11.04px;fill: #E56E53; font-family: "Liberation Sans";' textLength='38.45px' lengthAdjust='spacingAndGlyphs'>defend</text>
+<text x='142.05' y='207.70' text-anchor='middle' style='font-size: 11.04px;fill: #ED6042; font-family: "Liberation Sans";' textLength='35.23px' lengthAdjust='spacingAndGlyphs'>record</text>
+<text x='575.19' y='284.81' text-anchor='middle' style='font-size: 11.04px;fill: #4832BA; font-family: "Liberation Sans";' textLength='29.67px' lengthAdjust='spacingAndGlyphs'>clean</text>
+<text x='59.16' y='200.99' text-anchor='middle' style='font-size: 11.04px;fill: #FF0000; font-family: "Liberation Sans";' textLength='29.87px' lengthAdjust='spacingAndGlyphs'>china</text>
+<text x='613.42' y='218.94' text-anchor='middle' style='font-size: 11.04px;fill: #4430BA; font-family: "Liberation Sans";' textLength='51.00px' lengthAdjust='spacingAndGlyphs'>condition</text>
+<text x='560.41' y='302.69' text-anchor='middle' style='font-size: 11.04px;fill: #4933BA; font-family: "Liberation Sans";' textLength='33.45px' lengthAdjust='spacingAndGlyphs'>invest</text>
+<text x='153.89' y='231.89' text-anchor='middle' style='font-size: 11.04px;fill: #EE5D3F; font-family: "Liberation Sans";' textLength='58.67px' lengthAdjust='spacingAndGlyphs'>encourage</text>
+<text x='282.62' y='37.36' text-anchor='middle' style='font-size: 11.04px;fill: #CC8F7F; font-family: "Liberation Sans";' textLength='22.64px' lengthAdjust='spacingAndGlyphs'>true</text>
+<text x='585.01' y='99.07' text-anchor='middle' style='font-size: 11.04px;fill: #563DB9; font-family: "Liberation Sans";' textLength='34.66px' lengthAdjust='spacingAndGlyphs'>voting</text>
+<text x='134.89' y='59.28' text-anchor='middle' style='font-size: 11.04px;fill: #F5482B; font-family: "Liberation Sans";' textLength='41.30px' lengthAdjust='spacingAndGlyphs'>agenda</text>
+<text x='578.83' y='205.04' text-anchor='middle' style='font-size: 11.04px;fill: #573EB9; font-family: "Liberation Sans";' textLength='31.12px' lengthAdjust='spacingAndGlyphs'>count</text>
+<text x='398.16' y='316.51' text-anchor='middle' style='font-size: 11.04px;fill: #9486AF; font-family: "Liberation Sans";' textLength='20.89px' lengthAdjust='spacingAndGlyphs'>tool</text>
+<text x='288.30' y='324.67' text-anchor='middle' style='font-size: 11.04px;fill: #CF8C7B; font-family: "Liberation Sans";' textLength='35.82px' lengthAdjust='spacingAndGlyphs'>datum</text>
+<text x='595.36' y='81.67' text-anchor='middle' style='font-size: 11.04px;fill: #4631BA; font-family: "Liberation Sans";' textLength='30.61px' lengthAdjust='spacingAndGlyphs'>equal</text>
+<text x='293.19' y='52.63' text-anchor='middle' style='font-size: 11.04px;fill: #CB9081; font-family: "Liberation Sans";' textLength='22.85px' lengthAdjust='spacingAndGlyphs'>hurt</text>
+<text x='68.84' y='246.77' text-anchor='middle' style='font-size: 11.04px;fill: #FA361C; font-family: "Liberation Sans";' textLength='49.23px' lengthAdjust='spacingAndGlyphs'>taxpayer</text>
+<text x='511.68' y='91.26' text-anchor='middle' style='font-size: 11.04px;fill: #6349B7; font-family: "Liberation Sans";' textLength='20.75px' lengthAdjust='spacingAndGlyphs'>ban</text>
+<text x='534.71' y='31.66' text-anchor='middle' style='font-size: 11.04px;fill: #5940B8; font-family: "Liberation Sans";' textLength='24.87px' lengthAdjust='spacingAndGlyphs'>hate</text>
+<text x='525.54' y='118.10' text-anchor='middle' style='font-size: 11.04px;fill: #5E45B8; font-family: "Liberation Sans";' textLength='29.57px' lengthAdjust='spacingAndGlyphs'>wage</text>
+<text x='99.60' y='195.26' text-anchor='middle' style='font-size: 11.04px;fill: #ED5F41; font-family: "Liberation Sans";' textLength='67.13px' lengthAdjust='spacingAndGlyphs'>amendment</text>
+<text x='153.57' y='39.76' text-anchor='middle' style='font-size: 11.04px;fill: #ED6043; font-family: "Liberation Sans";' textLength='45.97px' lengthAdjust='spacingAndGlyphs'>sacrifice</text>
+<text x='550.10' y='189.02' text-anchor='middle' style='font-size: 11.04px;fill: #583FB8; font-family: "Liberation Sans";' textLength='18.08px' lengthAdjust='spacingAndGlyphs'>pre</text>
+<text x='301.79' y='68.06' text-anchor='middle' style='font-size: 11.04px;fill: #C99284; font-family: "Liberation Sans";' textLength='28.38px' lengthAdjust='spacingAndGlyphs'>night</text>
+<text x='145.41' y='302.75' text-anchor='middle' style='font-size: 11.04px;fill: #EC6345; font-family: "Liberation Sans";' textLength='36.33px' lengthAdjust='spacingAndGlyphs'>supply</text>
+<text x='592.84' y='65.40' text-anchor='middle' style='font-size: 11.04px;fill: #533BB9; font-family: "Liberation Sans";' textLength='29.28px' lengthAdjust='spacingAndGlyphs'>black</text>
+<text x='159.06' y='196.07' text-anchor='middle' style='font-size: 11.04px;fill: #EC6143; font-family: "Liberation Sans";' textLength='29.41px' lengthAdjust='spacingAndGlyphs'>trade</text>
+<text x='123.10' y='217.83' text-anchor='middle' style='font-size: 11.04px;fill: #F05739; font-family: "Liberation Sans";' textLength='34.96px' lengthAdjust='spacingAndGlyphs'>officer</text>
+<text x='68.38' y='180.24' text-anchor='middle' style='font-size: 11.04px;fill: #FD230F; font-family: "Liberation Sans";' textLength='32.82px' lengthAdjust='spacingAndGlyphs'>illegal</text>
+<text x='66.88' y='116.22' text-anchor='middle' style='font-size: 11.04px;fill: #F83E22; font-family: "Liberation Sans";' textLength='45.33px' lengthAdjust='spacingAndGlyphs'>medium</text>
+<text x='120.86' y='115.39' text-anchor='middle' style='font-size: 11.04px;fill: #F9391F; font-family: "Liberation Sans";' textLength='21.36px' lengthAdjust='spacingAndGlyphs'>iran</text>
+<text x='261.75' y='60.04' text-anchor='middle' style='font-size: 11.04px;fill: #CB9081; font-family: "Liberation Sans";' textLength='25.45px' lengthAdjust='spacingAndGlyphs'>truly</text>
+<text x='140.14' y='130.69' text-anchor='middle' style='font-size: 11.04px;fill: #EE5D3F; font-family: "Liberation Sans";' textLength='26.43px' lengthAdjust='spacingAndGlyphs'>taxis</text>
+<text x='84.02' y='216.22' text-anchor='middle' style='font-size: 11.04px;fill: #F5492C; font-family: "Liberation Sans";' textLength='37.05px' lengthAdjust='spacingAndGlyphs'>farmer</text>
+<text x='576.23' y='189.76' text-anchor='middle' style='font-size: 11.04px;fill: #543CB9; font-family: "Liberation Sans";' textLength='19.58px' lengthAdjust='spacingAndGlyphs'>aca</text>
+<text x='91.31' y='43.89' text-anchor='middle' style='font-size: 11.04px;fill: #FE1808; font-family: "Liberation Sans";' textLength='70.88px' lengthAdjust='spacingAndGlyphs'>conservative</text>
+<text x='98.80' y='59.23' text-anchor='middle' style='font-size: 11.04px;fill: #FB2E16; font-family: "Liberation Sans";' textLength='16.60px' lengthAdjust='spacingAndGlyphs'>joe</text>
+<text x='105.48' y='231.38' text-anchor='middle' style='font-size: 11.04px;fill: #F25234; font-family: "Liberation Sans";' textLength='19.50px' lengthAdjust='spacingAndGlyphs'>gas</text>
+<text x='98.07' y='246.70' text-anchor='middle' style='font-size: 11.04px;fill: #F44B2E; font-family: "Liberation Sans";' textLength='38.38px' lengthAdjust='spacingAndGlyphs'>growth</text>
+<text x='116.24' y='86.45' text-anchor='middle' style='font-size: 11.04px;fill: #F15436; font-family: "Liberation Sans";' textLength='30.12px' lengthAdjust='spacingAndGlyphs'>enjoy</text>
+<text x='558.56' y='133.25' text-anchor='middle' style='font-size: 11.04px;fill: #5D43B8; font-family: "Liberation Sans";' textLength='27.16px' lengthAdjust='spacingAndGlyphs'>color</text>
+<text x='587.73' y='148.49' text-anchor='middle' style='font-size: 11.04px;fill: #6047B8; font-family: "Liberation Sans";' textLength='78.17px' lengthAdjust='spacingAndGlyphs'>discrimination</text>
+<text x='68.90' y='231.53' text-anchor='middle' style='font-size: 11.04px;fill: #FC2913; font-family: "Liberation Sans";' textLength='49.37px' lengthAdjust='spacingAndGlyphs'>mandate</text>
+<text x='512.64' y='209.14' text-anchor='middle' style='font-size: 11.04px;fill: #5A41B8; font-family: "Liberation Sans";' textLength='69.88px' lengthAdjust='spacingAndGlyphs'>reproductive</text>
+<text x='521.24' y='173.67' text-anchor='middle' style='font-size: 11.04px;fill: #6148B8; font-family: "Liberation Sans";' textLength='43.32px' lengthAdjust='spacingAndGlyphs'>existing</text>
+<text x='172.33' y='78.85' text-anchor='middle' style='font-size: 11.04px;fill: #F15537; font-family: "Liberation Sans";' textLength='24.53px' lengthAdjust='spacingAndGlyphs'>dem</text>
+<text x='142.06' y='287.38' text-anchor='middle' style='font-size: 11.04px;fill: #F25335; font-family: "Liberation Sans";' textLength='13.35px' lengthAdjust='spacingAndGlyphs'>irs</text>
+<text x='72.23' y='262.01' text-anchor='middle' style='font-size: 11.04px;fill: #F64428; font-family: "Liberation Sans";' textLength='56.03px' lengthAdjust='spacingAndGlyphs'>regulation</text>
+<text x='74.66' y='72.72' text-anchor='middle' style='font-size: 11.04px;fill: #FC2B14; font-family: "Liberation Sans";' textLength='17.87px' lengthAdjust='spacingAndGlyphs'>left</text>
+<text x='135.91' y='99.50' text-anchor='middle' style='font-size: 11.04px;fill: #F15537; font-family: "Liberation Sans";' textLength='18.04px' lengthAdjust='spacingAndGlyphs'>pro</text>
+<text x='85.91' y='164.64' text-anchor='middle' style='font-size: 11.04px;fill: #F74226; font-family: "Liberation Sans";' textLength='48.92px' lengthAdjust='spacingAndGlyphs'>southern</text>
+<text x='88.80' y='130.66' text-anchor='middle' style='font-size: 11.04px;fill: #F9391F; font-family: "Liberation Sans";' textLength='61.91px' lengthAdjust='spacingAndGlyphs'>obamacare</text>
+<text x='334.14' y='263.33' text-anchor='middle' style='font-size: 11.04px;fill: #BB9D96; font-family: "Liberation Sans";' textLength='20.55px' lengthAdjust='spacingAndGlyphs'>epa</text>
+<text x='368.47' y='277.06' text-anchor='middle' style='font-size: 11.04px;fill: #9B91AE; font-family: "Liberation Sans";' textLength='19.93px' lengthAdjust='spacingAndGlyphs'>site</text>
+<text x='169.79' y='93.16' text-anchor='middle' style='font-size: 11.04px;fill: #EF5A3C; font-family: "Liberation Sans";' textLength='35.32px' lengthAdjust='spacingAndGlyphs'>liberty</text>
+<text x='128.97' y='180.05' text-anchor='middle' style='font-size: 11.04px;fill: #F35032; font-family: "Liberation Sans";' textLength='42.44px' lengthAdjust='spacingAndGlyphs'>chinese</text>
+<text x='92.56' y='102.47' text-anchor='middle' style='font-size: 11.04px;fill: #F74226; font-family: "Liberation Sans";' textLength='34.29px' lengthAdjust='spacingAndGlyphs'>liberal</text>
+<text x='173.66' y='143.79' text-anchor='middle' style='font-size: 11.04px;fill: #EE5E40; font-family: "Liberation Sans";' textLength='38.68px' lengthAdjust='spacingAndGlyphs'>regime</text>
+<text x='141.37' y='159.09' text-anchor='middle' style='font-size: 11.04px;fill: #F05739; font-family: "Liberation Sans";' textLength='61.42px' lengthAdjust='spacingAndGlyphs'>communist</text>
 <circle cx='485.95' cy='102.26' r='1.95' style='stroke-width: 0.71; stroke: #7961B5; fill: #7961B5;' />
 <circle cx='504.72' cy='42.93' r='1.95' style='stroke-width: 0.71; stroke: #7158B6; fill: #7158B6;' />
 <circle cx='462.14' cy='63.03' r='1.95' style='stroke-width: 0.71; stroke: #836DB3; fill: #836DB3;' />
