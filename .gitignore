@@ -135,3 +135,16 @@ data/
 code/article_collection/.ipynb_checkpoints/
 code/tweet_collection/.ipynb_checkpoints/
 code/analysis/.ipynb_checkpoints
+code/analysis/IC2S2_plots.ipynb
+code/analysis/.RData
+code/analysis/bertopic_model.py
+code/analysis/label_lexicon_reduce_by_one.sh
+code/analysis/lmer_models_tweets.ipynb
+code/analysis/old/
+code/analysis/similarity_length_correction.ipynb
+code/analysis/mediation_almog.r
+code/analysis/mediation_debugging.ipynb
+
+tables/
+
+data_2022-02-10/
