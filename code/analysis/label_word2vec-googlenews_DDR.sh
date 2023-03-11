@@ -1,7 +1,7 @@
 #!/bin/bash
 
 source_path="./"
-model_name_or_path="../../data/utilities/sentence-transformers/word2vec-googlenews-model"
+model_name_or_path="../../data/utilities/sentence-transformers/word2vec-googlenews-model-reduced-stopwords"
 
 # compute belief-speaking and truth-seeking similarities for the twitter corpus 
 # using the glove embedding
