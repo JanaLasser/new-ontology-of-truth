@@ -136,7 +136,7 @@ st_df_filtered <- st_df %>%
                             party_scaled_f_score > 0.65 | party_scaled_f_score < -0.65,
                           feature, ""))
 
-
+#options(ggrepel.max.overlaps = 15)
 
 st_plot <- ggplot(st_df_filtered, aes(party_scaled_f_score, comp_scaled_f_score,
                   color = party_scaled_f_score, group = 1, label = keyword,
