@@ -1,9 +1,13 @@
 # From Alternative conceptions of honesty to alternative facts in communications by U.S. politicians
 
-Data collection and analysis code for the article "A new ontology of truth shifts public political discourse towards misinformation".
+Data collection and analysis code for the article From [Alternative conceptions of honesty to alternative facts in communications by U.S. politicians](https://doi.org/10.1038/s41562-023-01691-w).
 
-Authors: Jana Lasser (jana.lasser@tugraz.at), Segun Taofeek Aroyehun, Fabio Carrella, Almog Simchon, David Garcia and Stephan
-Lewandowsky (Stephan.Lewandowsky@bristol.ac.uk).
+**Cite as**  
+J. Lasser, S.T. Aroyehun, F. Carrella, A.Simchon, D.Garcia, S. Lewandowsky, Alternative conceptions of honesty to alternative facts in communications by U.S. politicians, *Nature Human Behaviour*, DOI: [10.1038/s41562-023-01691-w](https://doi.org/10.1038/s41562-023-01691-w) (2023).
+
+**Contact**  
+* Jana Lasser (jana.lasser@tugraz.at)
+* Stephan Lewandowsky (Stephan.Lewandowsky@bristol.ac.uk).
 
 ## General Notes
 
