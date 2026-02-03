@@ -90,7 +90,7 @@ truth_roc <- sample_t_test %>%
 roc.plot(belief_roc$survey_roc_count, belief_roc$belief_ddr, 
          main = "Belief-speaking ROC Curve", plot = "both", binormal = T, CI = T)
 roc.plot(truth_roc$survey_roc_count, truth_roc$truth_ddr,
-         main = "Truth-seeking ROC Curve", plot = "both", binormal = T, CI = T)
+         main = "Fact-speaking ROC Curve", plot = "both", binormal = T, CI = T)
 
 roc.area(belief_roc$survey_roc_count, belief_roc$belief_ddr)
 roc.area(truth_roc$survey_roc_count, truth_roc$truth_ddr)
@@ -137,7 +137,7 @@ boxplot_df %>%
   ) +
   theme_minimal() +
   facet_wrap(vars(doc_id)) +
-  labs(fill = "Rate Type", title = "High Truth-seeking Tweets") +
+  labs(fill = "Rate Type", title = "High Fact-speaking Tweets") +
   xlab("Doc ID") +
   ylab("Rate Distributions")
 
