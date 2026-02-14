@@ -20,7 +20,8 @@ df_cleaned <- df %>%
          domain != 'youtube.com') %>% 
   filter(str_detect(url, ".com/|.gov/")) %>% 
   mutate(link_text = NA) %>% #preallocate text column
-  select(url, score, link_text) %>% 
+  #select(url, score, link_text) %>% 
+  select(url, link_text) %>% 
   distinct()
 
 
